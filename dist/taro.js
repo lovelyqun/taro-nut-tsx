@@ -12,17 +12,22 @@
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/esm/typeof.js");
 /* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/runtime */ "../node_modules/@tarojs/runtime/dist/runtime.esm.js");
-/* harmony import */ var _babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread2 */ "../node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_createSuper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/createSuper */ "../node_modules/@babel/runtime/helpers/esm/createSuper.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/objectSpread2 */ "../node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 
 
 
 
 
 
-function isFunction(x) {
+
+
+
+function isFunction$1(x) {
   return typeof x === 'function';
 }
 function isUndefined(x) {
@@ -37,7 +42,7 @@ var isBadObj = function isBadObj(x) {
 function throwTypeError(s) {
   throw new TypeError(s);
 }
-if (!isFunction(Object.assign)) {
+if (!isFunction$1(Object.assign)) {
   // Must be writable: true, enumerable: false, configurable: true
   Object.assign = function (target) {
     // .length of function is 2
@@ -61,7 +66,7 @@ if (!isFunction(Object.assign)) {
     return to;
   };
 }
-if (!isFunction(Object.defineProperties)) {
+if (!isFunction$1(Object.defineProperties)) {
   Object.defineProperties = function (obj, properties) {
     function convertToDescriptor(desc) {
       function hasProperty(obj, prop) {
@@ -79,14 +84,14 @@ if (!isFunction(Object.defineProperties)) {
       if (hasProperty(desc, 'writable')) d.writable = !!desc.writable;
       if (hasProperty(desc, 'get')) {
         var g = desc.get;
-        if (!isFunction(g) && !isUndefined(g)) {
+        if (!isFunction$1(g) && !isUndefined(g)) {
           throwTypeError('bad get');
         }
         d.get = g;
       }
       if (hasProperty(desc, 'set')) {
         var s = desc.set;
-        if (!isFunction(s) && !isUndefined(s)) {
+        if (!isFunction$1(s) && !isUndefined(s)) {
           throwTypeError('bad set');
         }
         d.set = s;
@@ -109,16 +114,459 @@ if (!isFunction(Object.defineProperties)) {
     return obj;
   };
 }
+var DEFAULT_EMPTY_ARRAY = '[]';
+var NO_DEFAULT_VALUE = '';
+var DEFAULT_TRUE = '!0';
+var DEFAULT_FALSE = '!1';
+var touchEvents = {
+  bindTouchStart: NO_DEFAULT_VALUE,
+  bindTouchMove: NO_DEFAULT_VALUE,
+  bindTouchEnd: NO_DEFAULT_VALUE,
+  bindTouchCancel: NO_DEFAULT_VALUE,
+  bindLongTap: NO_DEFAULT_VALUE
+};
+var animation = {
+  animation: NO_DEFAULT_VALUE,
+  bindAnimationStart: NO_DEFAULT_VALUE,
+  bindAnimationIteration: NO_DEFAULT_VALUE,
+  bindAnimationEnd: NO_DEFAULT_VALUE,
+  bindTransitionEnd: NO_DEFAULT_VALUE
+};
+function singleQuote(s) {
+  return "'".concat(s, "'");
+}
+Object.assign(Object.assign({
+  'hover-class': singleQuote('none'),
+  'hover-stop-propagation': DEFAULT_FALSE,
+  'hover-start-time': '50',
+  'hover-stay-time': '400'
+}, touchEvents), animation);
+Object.assign({
+  longitude: NO_DEFAULT_VALUE,
+  latitude: NO_DEFAULT_VALUE,
+  scale: '16',
+  markers: DEFAULT_EMPTY_ARRAY,
+  covers: NO_DEFAULT_VALUE,
+  polyline: DEFAULT_EMPTY_ARRAY,
+  circles: DEFAULT_EMPTY_ARRAY,
+  controls: DEFAULT_EMPTY_ARRAY,
+  'include-points': DEFAULT_EMPTY_ARRAY,
+  'show-location': NO_DEFAULT_VALUE,
+  'layer-style': '1',
+  bindMarkerTap: NO_DEFAULT_VALUE,
+  bindControlTap: NO_DEFAULT_VALUE,
+  bindCalloutTap: NO_DEFAULT_VALUE,
+  bindUpdated: NO_DEFAULT_VALUE
+}, touchEvents);
+Object.assign({
+  size: singleQuote('default'),
+  type: NO_DEFAULT_VALUE,
+  plain: DEFAULT_FALSE,
+  disabled: NO_DEFAULT_VALUE,
+  loading: DEFAULT_FALSE,
+  'form-type': NO_DEFAULT_VALUE,
+  'open-type': NO_DEFAULT_VALUE,
+  'hover-class': singleQuote('button-hover'),
+  'hover-stop-propagation': DEFAULT_FALSE,
+  'hover-start-time': '20',
+  'hover-stay-time': '70',
+  name: NO_DEFAULT_VALUE
+}, touchEvents);
+Object.assign({
+  'scroll-top': DEFAULT_FALSE
+}, touchEvents);
+Object.assign(Object.assign({
+  direction: 'none',
+  inertia: DEFAULT_FALSE,
+  'out-of-bounds': DEFAULT_FALSE,
+  x: NO_DEFAULT_VALUE,
+  y: NO_DEFAULT_VALUE,
+  damping: '20',
+  friction: '2',
+  disabled: NO_DEFAULT_VALUE,
+  scale: DEFAULT_FALSE,
+  'scale-min': '0.5',
+  'scale-max': '10',
+  'scale-value': '1',
+  bindChange: NO_DEFAULT_VALUE,
+  bindScale: NO_DEFAULT_VALUE,
+  bindHTouchMove: NO_DEFAULT_VALUE,
+  bindVTouchMove: NO_DEFAULT_VALUE,
+  width: singleQuote('10px'),
+  height: singleQuote('10px')
+}, touchEvents), animation);
+Object.assign(Object.assign({
+  'scroll-x': DEFAULT_FALSE,
+  'scroll-y': DEFAULT_FALSE,
+  'upper-threshold': '50',
+  'lower-threshold': '50',
+  'scroll-top': NO_DEFAULT_VALUE,
+  'scroll-left': NO_DEFAULT_VALUE,
+  'scroll-into-view': NO_DEFAULT_VALUE,
+  'scroll-with-animation': DEFAULT_FALSE,
+  'enable-back-to-top': DEFAULT_FALSE,
+  bindScrollToUpper: NO_DEFAULT_VALUE,
+  bindScrollToLower: NO_DEFAULT_VALUE,
+  bindScroll: NO_DEFAULT_VALUE
+}, touchEvents), animation);
+Object.assign({
+  'indicator-dots': DEFAULT_FALSE,
+  'indicator-color': singleQuote('rgba(0, 0, 0, .3)'),
+  'indicator-active-color': singleQuote('#000000'),
+  autoplay: DEFAULT_FALSE,
+  current: '0',
+  interval: '5000',
+  duration: '500',
+  circular: DEFAULT_FALSE,
+  vertical: DEFAULT_FALSE,
+  'previous-margin': singleQuote('0px'),
+  'next-margin': singleQuote('0px'),
+  'display-multiple-items': '1',
+  bindChange: NO_DEFAULT_VALUE,
+  bindTransition: NO_DEFAULT_VALUE,
+  bindAnimationFinish: NO_DEFAULT_VALUE
+}, touchEvents);
+Object.assign({
+  src: NO_DEFAULT_VALUE,
+  mode: singleQuote('scaleToFill'),
+  'lazy-load': DEFAULT_FALSE,
+  bindError: NO_DEFAULT_VALUE,
+  bindLoad: NO_DEFAULT_VALUE
+}, touchEvents);
+Object.assign({
+  src: NO_DEFAULT_VALUE,
+  autoplay: DEFAULT_FALSE,
+  muted: DEFAULT_FALSE,
+  orientation: singleQuote('vertical'),
+  'object-fit': singleQuote('contain'),
+  'background-mute': DEFAULT_FALSE,
+  'min-cache': '1',
+  'max-cache': '3',
+  bindStateChange: NO_DEFAULT_VALUE,
+  bindFullScreenChange: NO_DEFAULT_VALUE,
+  bindNetStatus: NO_DEFAULT_VALUE
+}, animation);
+Object.assign({
+  src: NO_DEFAULT_VALUE,
+  duration: NO_DEFAULT_VALUE,
+  controls: DEFAULT_TRUE,
+  'danmu-list': NO_DEFAULT_VALUE,
+  'danmu-btn': NO_DEFAULT_VALUE,
+  'enable-danmu': NO_DEFAULT_VALUE,
+  autoplay: DEFAULT_FALSE,
+  loop: DEFAULT_FALSE,
+  muted: DEFAULT_FALSE,
+  'initial-time': '0',
+  'page-gesture': DEFAULT_FALSE,
+  direction: NO_DEFAULT_VALUE,
+  'show-progress': DEFAULT_TRUE,
+  'show-fullscreen-btn': DEFAULT_TRUE,
+  'show-play-btn': DEFAULT_TRUE,
+  'show-center-play-btn': DEFAULT_TRUE,
+  'enable-progress-gesture': DEFAULT_TRUE,
+  'object-fit': singleQuote('contain'),
+  poster: NO_DEFAULT_VALUE,
+  'show-mute-btn': DEFAULT_FALSE,
+  bindPlay: NO_DEFAULT_VALUE,
+  bindPause: NO_DEFAULT_VALUE,
+  bindEnded: NO_DEFAULT_VALUE,
+  bindTimeUpdate: NO_DEFAULT_VALUE,
+  bindFullScreenChange: NO_DEFAULT_VALUE,
+  bindWaiting: NO_DEFAULT_VALUE,
+  bindError: NO_DEFAULT_VALUE
+}, animation);
+Object.assign({
+  'canvas-id': NO_DEFAULT_VALUE,
+  'disable-scroll': DEFAULT_FALSE,
+  bindError: NO_DEFAULT_VALUE
+}, touchEvents);
+var PLATFORM_TYPE;
+(function (PLATFORM_TYPE) {
+  PLATFORM_TYPE["MINI"] = "mini";
+  PLATFORM_TYPE["WEB"] = "web";
+  PLATFORM_TYPE["RN"] = "rn";
+  PLATFORM_TYPE["HARMONY"] = "harmony";
+  PLATFORM_TYPE["QUICK"] = "quickapp";
+})(PLATFORM_TYPE || (PLATFORM_TYPE = {}));
+({
+  h5: {
+    type: PLATFORM_TYPE.WEB
+  },
+  harmony: {
+    type: PLATFORM_TYPE.HARMONY
+  },
+  mini: {
+    type: PLATFORM_TYPE.MINI
+  },
+  rn: {
+    type: PLATFORM_TYPE.RN
+  },
+  quickapp: {
+    type: PLATFORM_TYPE.QUICK
+  }
+});
+var Events = /*#__PURE__*/function () {
+  function Events(opts) {
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Events);
+    var _a;
+    this.callbacks = (_a = opts === null || opts === void 0 ? void 0 : opts.callbacks) !== null && _a !== void 0 ? _a : {};
+  }
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(Events, [{
+    key: "on",
+    value: function on(eventName, callback, context) {
+      var event, node, tail, list;
+      if (!callback) {
+        return this;
+      }
+      eventName = eventName.split(Events.eventSplitter);
+      this.callbacks || (this.callbacks = {});
+      var calls = this.callbacks;
+      while (event = eventName.shift()) {
+        list = calls[event];
+        node = list ? list.tail : {};
+        node.next = tail = {};
+        node.context = context;
+        node.callback = callback;
+        calls[event] = {
+          tail: tail,
+          next: list ? list.next : node
+        };
+      }
+      return this;
+    }
+  }, {
+    key: "once",
+    value: function once(events, callback, context) {
+      var _this = this;
+      var wrapper = function wrapper() {
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+        callback.apply(_this, args);
+        _this.off(events, wrapper, context);
+      };
+      this.on(events, wrapper, context);
+      return this;
+    }
+  }, {
+    key: "off",
+    value: function off(events, callback, context) {
+      var event, calls, node, tail, cb, ctx;
+      if (!(calls = this.callbacks)) {
+        return this;
+      }
+      if (!(events || callback || context)) {
+        delete this.callbacks;
+        return this;
+      }
+      events = events ? events.split(Events.eventSplitter) : Object.keys(calls);
+      while (event = events.shift()) {
+        node = calls[event];
+        delete calls[event];
+        if (!node || !(callback || context)) {
+          continue;
+        }
+        tail = node.tail;
+        while ((node = node.next) !== tail) {
+          cb = node.callback;
+          ctx = node.context;
+          if (callback && cb !== callback || context && ctx !== context) {
+            this.on(event, cb, ctx);
+          }
+        }
+      }
+      return this;
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(events) {
+      var event, node, calls, tail;
+      if (!(calls = this.callbacks)) {
+        return this;
+      }
+      events = events.split(Events.eventSplitter);
+      var rest = [].slice.call(arguments, 1);
+      while (event = events.shift()) {
+        if (node = calls[event]) {
+          tail = node.tail;
+          while ((node = node.next) !== tail) {
+            node.callback.apply(node.context || this, rest);
+          }
+        }
+      }
+      return this;
+    }
+  }]);
+  return Events;
+}();
+Events.eventSplitter = ','; // Note: Harmony ACE API 8 开发板不支持使用正则 split 字符串 /\s+/
+function isFunction(o) {
+  return typeof o === 'function';
+}
+var isWebPlatform = function isWebPlatform() {
+  return  false || "mini" === 'web';
+};
+var HOOK_TYPE;
+(function (HOOK_TYPE) {
+  HOOK_TYPE[HOOK_TYPE["SINGLE"] = 0] = "SINGLE";
+  HOOK_TYPE[HOOK_TYPE["MULTI"] = 1] = "MULTI";
+  HOOK_TYPE[HOOK_TYPE["WATERFALL"] = 2] = "WATERFALL";
+})(HOOK_TYPE || (HOOK_TYPE = {}));
+var defaultMiniLifecycle = {
+  app: ['onLaunch', 'onShow', 'onHide'],
+  page: ['onLoad', 'onUnload', 'onReady', 'onShow', 'onHide', ['onPullDownRefresh', 'onReachBottom', 'onPageScroll', 'onResize', 'onTabItemTap', 'onTitleClick', 'onOptionMenuClick', 'onPopMenuClick', 'onPullIntercept', 'onAddToFavorites'], ['onShareAppMessage', 'onShareTimeline']],
+  component: ['attached', 'detached']
+};
+function TaroHook(type, initial) {
+  return {
+    type: type,
+    initial: initial || null
+  };
+}
+var TaroHooks = /*#__PURE__*/function (_Events) {
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroHooks, _Events);
+  var _super = (0,_babel_runtime_helpers_createSuper__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroHooks);
+  function TaroHooks(hooks, opts) {
+    var _this2;
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, TaroHooks);
+    _this2 = _super.call(this, opts);
+    _this2.hooks = hooks;
+    for (var hookName in hooks) {
+      var initial = hooks[hookName].initial;
+      if (isFunction(initial)) {
+        _this2.on(hookName, initial);
+      }
+    }
+    return _this2;
+  }
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(TaroHooks, [{
+    key: "tapOneOrMany",
+    value: function tapOneOrMany(hookName, callback) {
+      var _this3 = this;
+      var list = isFunction(callback) ? [callback] : callback;
+      list.forEach(function (cb) {
+        return _this3.on(hookName, cb);
+      });
+    }
+  }, {
+    key: "tap",
+    value: function tap(hookName, callback) {
+      var hooks = this.hooks;
+      var _hooks$hookName = hooks[hookName],
+        type = _hooks$hookName.type,
+        initial = _hooks$hookName.initial;
+      if (type === HOOK_TYPE.SINGLE) {
+        this.off(hookName);
+        this.on(hookName, isFunction(callback) ? callback : callback[callback.length - 1]);
+      } else {
+        initial && this.off(hookName, initial);
+        this.tapOneOrMany(hookName, callback);
+      }
+    }
+  }, {
+    key: "call",
+    value: function call(hookName) {
+      var _a;
+      var hook = this.hooks[hookName];
+      if (!hook) return;
+      var type = hook.type;
+      var calls = this.callbacks;
+      if (!calls) return;
+      var list = calls[hookName];
+      if (list) {
+        var tail = list.tail;
+        var node = list.next;
+        for (var _len2 = arguments.length, rest = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+          rest[_key2 - 1] = arguments[_key2];
+        }
+        var args = rest;
+        var res;
+        while (node !== tail) {
+          res = (_a = node.callback) === null || _a === void 0 ? void 0 : _a.apply(node.context || this, args);
+          if (type === HOOK_TYPE.WATERFALL) {
+            var params = [res];
+            args = params;
+          }
+          node = node.next;
+        }
+        return res;
+      }
+    }
+  }, {
+    key: "isExist",
+    value: function isExist(hookName) {
+      var _a;
+      return Boolean((_a = this.callbacks) === null || _a === void 0 ? void 0 : _a[hookName]);
+    }
+  }]);
+  return TaroHooks;
+}(Events);
+new TaroHooks({
+  getMiniLifecycle: TaroHook(HOOK_TYPE.SINGLE, function (defaultConfig) {
+    return defaultConfig;
+  }),
+  getMiniLifecycleImpl: TaroHook(HOOK_TYPE.SINGLE, function () {
+    return this.call('getMiniLifecycle', defaultMiniLifecycle);
+  }),
+  getLifecycle: TaroHook(HOOK_TYPE.SINGLE, function (instance, lifecycle) {
+    return instance[lifecycle];
+  }),
+  getPathIndex: TaroHook(HOOK_TYPE.SINGLE, function (indexOfNode) {
+    return "[".concat(indexOfNode, "]");
+  }),
+  getEventCenter: TaroHook(HOOK_TYPE.SINGLE, function (Events) {
+    return new Events();
+  }),
+  isBubbleEvents: TaroHook(HOOK_TYPE.SINGLE, function (eventName) {
+    /**
+     * 支持冒泡的事件, 除 支付宝小程序外，其余的可冒泡事件都和微信保持一致
+     * 详见 见 https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html
+     */
+    var BUBBLE_EVENTS = new Set(['touchstart', 'touchmove', 'touchcancel', 'touchend', 'touchforcechange', 'tap', 'longpress', 'longtap', 'transitionend', 'animationstart', 'animationiteration', 'animationend']);
+    return BUBBLE_EVENTS.has(eventName);
+  }),
+  getSpecialNodes: TaroHook(HOOK_TYPE.SINGLE, function () {
+    return ['view', 'text', 'image'];
+  }),
+  onRemoveAttribute: TaroHook(HOOK_TYPE.SINGLE),
+  batchedEventUpdates: TaroHook(HOOK_TYPE.SINGLE),
+  mergePageInstance: TaroHook(HOOK_TYPE.SINGLE),
+  modifyPageObject: TaroHook(HOOK_TYPE.SINGLE),
+  createPullDownComponent: TaroHook(HOOK_TYPE.SINGLE),
+  getDOMNode: TaroHook(HOOK_TYPE.SINGLE),
+  modifyHydrateData: TaroHook(HOOK_TYPE.SINGLE),
+  modifySetAttrPayload: TaroHook(HOOK_TYPE.SINGLE),
+  modifyRmAttrPayload: TaroHook(HOOK_TYPE.SINGLE),
+  onAddEvent: TaroHook(HOOK_TYPE.SINGLE),
+  modifyMpEvent: TaroHook(HOOK_TYPE.MULTI),
+  modifyMpEventImpl: TaroHook(HOOK_TYPE.SINGLE, function (e) {
+    try {
+      // 有些小程序的事件对象的某些属性只读
+      this.call('modifyMpEvent', e);
+    } catch (error) {
+      console.warn('[Taro modifyMpEvent hook Error]: ' + (error === null || error === void 0 ? void 0 : error.message));
+    }
+  }),
+  injectNewStyleProperties: TaroHook(HOOK_TYPE.SINGLE),
+  modifyTaroEvent: TaroHook(HOOK_TYPE.MULTI),
+  modifyDispatchEvent: TaroHook(HOOK_TYPE.MULTI),
+  initNativeApi: TaroHook(HOOK_TYPE.MULTI),
+  patchElement: TaroHook(HOOK_TYPE.MULTI)
+});
+new Date().getTime().toString();
 var ENV_TYPE = {
   WEAPP: 'WEAPP',
-  WEB: 'WEB',
-  RN: 'RN',
   SWAN: 'SWAN',
   ALIPAY: 'ALIPAY',
   TT: 'TT',
   QQ: 'QQ',
-  JD: 'JD'
+  JD: 'JD',
+  WEB: 'WEB',
+  RN: 'RN',
+  HARMONY: 'HARMONY',
+  QUICKAPP: 'QUICKAPP'
 };
+var isWeb = isWebPlatform();
 function getEnv() {
   if (true) {
     return ENV_TYPE.WEAPP;
@@ -145,7 +593,7 @@ var Chain = /*#__PURE__*/function () {
         return Promise.reject(err);
       });
       Object.keys(p).forEach(function (k) {
-        return isFunction(p[k]) && (res[k] = p[k]);
+        return isFunction$1(p[k]) && (res[k] = p[k]);
       });
       return res;
     }
@@ -176,7 +624,7 @@ var Link = /*#__PURE__*/function () {
       chain.interceptors = chain.interceptors.filter(function (interceptor) {
         return interceptor !== taroInterceptor;
       }).concat(taroInterceptor);
-      return chain.proceed((0,_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_4__["default"])({}, requestParams));
+      return chain.proceed((0,_babel_runtime_helpers_objectSpread2__WEBPACK_IMPORTED_MODULE_6__["default"])({}, requestParams));
     }
   }, {
     key: "addInterceptor",
@@ -191,6 +639,11 @@ var Link = /*#__PURE__*/function () {
   }]);
   return Link;
 }();
+function interceptorify(promiseifyApi) {
+  return new Link(function (chain) {
+    return promiseifyApi(chain.requestParams);
+  });
+}
 function timeoutInterceptor(chain) {
   var requestParams = chain.requestParams;
   var p;
@@ -209,7 +662,7 @@ function timeoutInterceptor(chain) {
       reject(err);
     });
   });
-  if (!isUndefined(p) && isFunction(p.abort)) res.abort = p.abort;
+  if (!isUndefined(p) && isFunction$1(p.abort)) res.abort = p.abort;
   return res;
 }
 function logInterceptor(chain) {
@@ -217,19 +670,16 @@ function logInterceptor(chain) {
   var method = requestParams.method,
     data = requestParams.data,
     url = requestParams.url;
-  if (true) {
-    // eslint-disable-next-line no-console
-    console.log("http ".concat(method || 'GET', " --> ").concat(url, " data: "), data);
-  }
+
+  // eslint-disable-next-line no-console
+  console.log("http ".concat(method || 'GET', " --> ").concat(url, " data: "), data);
   var p = chain.proceed(requestParams);
   var res = p.then(function (res) {
-    if (true) {
-      // eslint-disable-next-line no-console
-      console.log("http <-- ".concat(url, " result:"), res);
-    }
+    // eslint-disable-next-line no-console
+    console.log("http <-- ".concat(url, " result:"), res);
     return res;
   });
-  if (isFunction(p.abort)) res.abort = p.abort;
+  if (isFunction$1(p.abort)) res.abort = p.abort;
   return res;
 }
 var interceptors = /*#__PURE__*/Object.freeze({
@@ -242,7 +692,7 @@ function Behavior(options) {
 }
 function getPreload(current) {
   return function (key, val) {
-    current.preloadData = isObject(key) ? key : (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])({}, key, val);
+    current.preloadData = isObject(key) ? key : (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, key, val);
   };
 }
 var defaultDesignWidth = 750;
@@ -252,6 +702,8 @@ var defaultDesignRatio = {
   828: 1.81 / 2
 };
 var defaultBaseFontSize = 20;
+var defaultUnitPrecision = 5;
+var defaultTargetUnit = 'rpx';
 function getInitPxTransform(taro) {
   return function (config) {
     var _config$designWidth = config.designWidth,
@@ -259,25 +711,46 @@ function getInitPxTransform(taro) {
       _config$deviceRatio = config.deviceRatio,
       deviceRatio = _config$deviceRatio === void 0 ? defaultDesignRatio : _config$deviceRatio,
       _config$baseFontSize = config.baseFontSize,
-      baseFontSize = _config$baseFontSize === void 0 ? defaultBaseFontSize : _config$baseFontSize;
+      baseFontSize = _config$baseFontSize === void 0 ? defaultBaseFontSize : _config$baseFontSize,
+      _config$targetUnit = config.targetUnit,
+      targetUnit = _config$targetUnit === void 0 ? defaultTargetUnit : _config$targetUnit,
+      _config$unitPrecision = config.unitPrecision,
+      unitPrecision = _config$unitPrecision === void 0 ? defaultUnitPrecision : _config$unitPrecision;
     taro.config = taro.config || {};
     taro.config.designWidth = designWidth;
     taro.config.deviceRatio = deviceRatio;
     taro.config.baseFontSize = baseFontSize;
+    taro.config.targetUnit = targetUnit;
+    taro.config.unitPrecision = unitPrecision;
   };
 }
 function getPxTransform(taro) {
   return function (size) {
     var config = taro.config || {};
     var deviceRatio = config.deviceRatio || defaultDesignRatio;
+    var baseFontSize = config.baseFontSize;
     var designWidth = function () {
       var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      return isFunction(config.designWidth) ? config.designWidth(input) : config.designWidth || defaultDesignWidth;
+      return isFunction$1(config.designWidth) ? config.designWidth(input) : config.designWidth || defaultDesignWidth;
     }(size);
     if (!(designWidth in deviceRatio)) {
       throw new Error("deviceRatio \u914D\u7F6E\u4E2D\u4E0D\u5B58\u5728 ".concat(designWidth, " \u7684\u8BBE\u7F6E\uFF01"));
     }
-    return parseInt(size, 10) * deviceRatio[designWidth] + 'rpx';
+    var formatSize = ~~size;
+    var rootValue = 1 / config.deviceRatio[designWidth];
+    switch (config.targetUnit) {
+      case 'rem':
+        rootValue *= baseFontSize * 2;
+        break;
+      case 'px':
+        rootValue *= 2;
+        break;
+    }
+    var val = formatSize / rootValue;
+    if (config.unitPrecision >= 0 && config.unitPrecision <= 100) {
+      val = Number(val.toFixed(config.unitPrecision));
+    }
+    return val + config.targetUnit;
   };
 }
 
@@ -294,7 +767,8 @@ var Taro = {
   nextTick: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__.nextTick,
   eventCenter: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__.eventCenter,
   Events: _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__.Events,
-  getInitPxTransform: getInitPxTransform
+  getInitPxTransform: getInitPxTransform,
+  interceptorify: interceptorify
 };
 Taro.initPxTransform = getInitPxTransform(Taro);
 Taro.preload = getPreload(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__.Current);
@@ -313,7 +787,7 @@ Taro.pxTransform = getPxTransform(Taro);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createVue3App": function() { return /* binding */ createVue3App; }
 /* harmony export */ });
-/* unused harmony exports createNativeComponentConfig, isClassComponent, setGlobalDataPlugin, setReconciler, useAddToFavorites, useDidHide, useDidShow, useLoad, useOptionMenuClick, usePageScroll, usePullDownRefresh, usePullIntercept, useReachBottom, useReady, useResize, useRouter, useSaveExitState, useShareAppMessage, useShareTimeline, useTabItemTap, useTitleClick, useUnload */
+/* unused harmony exports createNativeComponentConfig, isClassComponent, setGlobalDataPlugin, setReconciler, useAddToFavorites, useDidHide, useDidShow, useError, useLaunch, useLoad, useOptionMenuClick, usePageNotFound, usePageScroll, usePullDownRefresh, usePullIntercept, useReachBottom, useReady, useResize, useRouter, useSaveExitState, useShareAppMessage, useShareTimeline, useTabItemTap, useTitleClick, useUnhandledRejection, useUnload */
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "../node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js */ "../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
@@ -374,6 +848,11 @@ function createTaroHook(lifecycle) {
 /** LifeCycle */
 var useDidShow = createTaroHook('onShow');
 var useDidHide = createTaroHook('onHide');
+/** App */
+var useError = createTaroHook('onError');
+var useUnhandledRejection = createTaroHook('onUnhandledRejection');
+var useLaunch = createTaroHook('onLaunch');
+var usePageNotFound = createTaroHook('onPageNotFound');
 /** Page */
 var useLoad = createTaroHook('onLoad');
 var usePageScroll = createTaroHook('onPageScroll');
@@ -401,8 +880,11 @@ var taroHooks = /*#__PURE__*/Object.freeze({
   useAddToFavorites: useAddToFavorites,
   useDidHide: useDidHide,
   useDidShow: useDidShow,
+  useError: useError,
+  useLaunch: useLaunch,
   useLoad: useLoad,
   useOptionMenuClick: useOptionMenuClick,
+  usePageNotFound: usePageNotFound,
   usePageScroll: usePageScroll,
   usePullDownRefresh: usePullDownRefresh,
   usePullIntercept: usePullIntercept,
@@ -415,6 +897,7 @@ var taroHooks = /*#__PURE__*/Object.freeze({
   useShareTimeline: useShareTimeline,
   useTabItemTap: useTabItemTap,
   useTitleClick: useTitleClick,
+  useUnhandledRejection: useUnhandledRejection,
   useUnload: useUnload
 });
 var setGlobalDataPlugin = {
@@ -440,11 +923,34 @@ function setRouterParams(options) {
     params: options === null || options === void 0 ? void 0 : options.query
   }, options);
 }
+var isWeb = (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)();
 function setReconciler() {
   _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('getLifecycle', function (instance, lifecycle) {
     return instance.$options[lifecycle];
   });
-  if (false) {}
+  if (isWeb) {
+    _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('createPullDownComponent', function (component, path, h) {
+      var inject = {
+        props: {
+          tid: String
+        },
+        created: function created() {
+          (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.injectPageInstance)(this, path);
+        }
+      };
+      component.mixins = (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isArray)(component.mixins) ? component.mixins.push(inject) : [inject];
+      return {
+        render: function render() {
+          return h('taro-pull-to-refresh', {
+            class: 'hydrated'
+          }, [h(component, this.$slots.default)]);
+        }
+      };
+    });
+    _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('getDOMNode', function (el) {
+      return el.$el;
+    });
+  }
 }
 function createVue3Page(h, id) {
   return function (component) {
@@ -480,7 +986,7 @@ function createVue3Page(h, id) {
         return this.$slots.default();
       }
     };
-    var RootElement =  false ? 0 : 'root';
+    var RootElement = isWeb ? 'div' : 'root';
     var PageComponent = Object.assign({}, component);
     var option = ((_d = (_c = (_b = PageComponent.props) === null || _b === void 0 ? void 0 : _b.option) === null || _c === void 0 ? void 0 : _c.default) === null || _d === void 0 ? void 0 : _d.call(_c)) || {};
     return h(ProviderComponent, {
@@ -489,7 +995,7 @@ function createVue3Page(h, id) {
       default: function _default() {
         return [h(RootElement, {
           id: id,
-          class:  false ? 0 : ''
+          class: isWeb ? 'taro_page' : ''
         }, [h(PageComponent, {
           tid: id,
           option: option
@@ -507,7 +1013,7 @@ function createVue3App(app, h, config) {
   app._component.render = function () {
     return pages.slice();
   };
-  if (true) {
+  if (!isWeb) {
     appInstance = app.mount('#app');
   }
   var _hooks$call$app = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').app, 3),
@@ -540,7 +1046,9 @@ function createVue3App(app, h, config) {
       var _this = this;
       var _a;
       setRouterParams(options);
-      if (false) {}
+      if (isWeb) {
+        appInstance = app.mount("#".concat(config.appId || 'app'));
+      }
       // 把 App Class 上挂载的额外属性同步到全局 app 对象中
       // eslint-disable-next-line dot-notation
       if (app['taroGlobalData']) {
@@ -1120,6 +1628,83 @@ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('modifyTaroEvent', functio
 
 /***/ }),
 
+/***/ "../node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js":
+/*!******************************************************************************!*\
+  !*** ../node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ScrollView": function() { return /* binding */ ScrollView; }
+/* harmony export */ });
+/* unused harmony exports Ad, AdCustom, Audio, Block, Button, Camera, Canvas, ChannelLive, ChannelVideo, Checkbox, CheckboxGroup, CoverImage, CoverView, CustomWrapper, Editor, Form, FunctionalPageNavigator, GridView, Icon, Image, Input, KeyboardAccessory, Label, ListView, LivePlayer, LivePusher, Map, MatchMedia, MovableArea, MovableView, NativeSlot, NavigationBar, Navigator, OfficialAccount, OpenData, PageContainer, PageMeta, Picker, PickerView, PickerViewColumn, Progress, Radio, RadioGroup, RichText, RootPortal, ShareElement, Slider, Slot, StickyHeader, StickySection, Swiper, SwiperItem, Switch, Text, Textarea, Video, View, VoipRoom, WebView */
+var View = 'view';
+var Icon = 'icon';
+var Progress = 'progress';
+var RichText = 'rich-text';
+var Text = 'text';
+var Button = 'button';
+var Checkbox = 'checkbox';
+var CheckboxGroup = 'checkbox-group';
+var Form = 'form';
+var Input = 'input';
+var Label = 'label';
+var Picker = 'picker';
+var PickerView = 'picker-view';
+var PickerViewColumn = 'picker-view-column';
+var Radio = 'radio';
+var RadioGroup = 'radio-group';
+var Slider = 'slider';
+var Switch = 'switch';
+var CoverImage = 'cover-image';
+var Textarea = 'textarea';
+var CoverView = 'cover-view';
+var MovableArea = 'movable-area';
+var MovableView = 'movable-view';
+var ScrollView = 'scroll-view';
+var Swiper = 'swiper';
+var SwiperItem = 'swiper-item';
+var Navigator = 'navigator';
+var Audio = 'audio';
+var Camera = 'camera';
+var Image = 'image';
+var LivePlayer = 'live-player';
+var Video = 'video';
+var Canvas = 'canvas';
+var Ad = 'ad';
+var WebView = 'web-view';
+var Block = 'block';
+var Map = 'map';
+var Slot = 'slot';
+var NativeSlot = 'native-slot';
+var CustomWrapper = 'custom-wrapper';
+
+// For React.createElement's type
+var Editor = 'editor';
+var MatchMedia = 'match-media';
+var FunctionalPageNavigator = 'functional-page-navigator';
+var LivePusher = 'live-pusher';
+var OfficialAccount = 'official-account';
+var OpenData = 'open-data';
+var NavigationBar = 'navigation-bar';
+var PageMeta = 'page-meta';
+var VoipRoom = 'voip-room';
+var AdCustom = 'ad-custom';
+var PageContainer = 'page-container';
+var ShareElement = 'share-element';
+var KeyboardAccessory = 'keyboard-accessory';
+var RootPortal = 'root-portal';
+var ChannelLive = 'channel-live';
+var ChannelVideo = 'channel-video';
+var ListView = 'list-view';
+var GridView = 'grid-view';
+var StickyHeader = 'sticky-header';
+var StickySection = 'sticky-section';
+
+
+/***/ }),
+
 /***/ "../node_modules/@tarojs/plugin-platform-weapp/dist/runtime.js":
 /*!*********************************************************************!*\
   !*** ../node_modules/@tarojs/plugin-platform-weapp/dist/runtime.js ***!
@@ -1129,7 +1714,7 @@ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('modifyTaroEvent', functio
 "use strict";
 /* harmony import */ var _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/shared */ "../node_modules/@tarojs/shared/dist/shared.esm.js");
 
-var needPromiseApis = new Set(['authPrivateMessage', 'chooseContact', 'cropImage', 'disableAlertBeforeUnload', 'editImage', 'enableAlertBeforeUnload', 'getBackgroundFetchData', 'getFuzzyLocation', 'getGroupEnterInfo', 'getLocalIPAddress', 'getShareInfo', 'getUserProfile', 'getWeRunData', 'join1v1Chat', 'openCustomerServiceChat', 'openVideoEditor', 'saveFileToDisk', 'scanItem', 'setEnable1v1Chat', 'setWindowSize', 'sendBizRedPacket', 'startFacialRecognitionVerify']);
+var needPromiseApis = new Set(['addFileToFavorites', 'addVideoToFavorites', 'authPrivateMessage', 'checkIsAddedToMyMiniProgram', 'chooseContact', 'cropImage', 'disableAlertBeforeUnload', 'editImage', 'enableAlertBeforeUnload', 'getBackgroundFetchData', 'getChannelsLiveInfo', 'getChannelsLiveNoticeInfo', 'getFuzzyLocation', 'getGroupEnterInfo', 'getLocalIPAddress', 'getShareInfo', 'getUserProfile', 'getWeRunData', 'join1v1Chat', 'openChannelsActivity', 'openChannelsEvent', 'openChannelsLive', 'openChannelsUserProfile', 'openCustomerServiceChat', 'openVideoEditor', 'saveFileToDisk', 'scanItem', 'setEnable1v1Chat', 'setWindowSize', 'sendBizRedPacket', 'startFacialRecognitionVerify']);
 function initNativeApi(taro) {
   (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.processApis)(taro, wx, {
     needPromiseApis: needPromiseApis,
@@ -1156,6 +1741,10 @@ function initNativeApi(taro) {
     if (typeof (pageCtx === null || pageCtx === void 0 ? void 0 : pageCtx.getTabBar) === 'function') {
       return (_a = pageCtx.getTabBar()) === null || _a === void 0 ? void 0 : _a.$taroInstances;
     }
+  };
+  taro.getRenderer = function () {
+    var _a, _b, _c;
+    return (_c = (_b = (_a = taro.getCurrentInstance()) === null || _a === void 0 ? void 0 : _a.page) === null || _b === void 0 ? void 0 : _b.renderer) !== null && _c !== void 0 ? _c : 'webview';
   };
 }
 var _true = 'true';
@@ -1236,7 +1825,8 @@ var components = {
     bindNicknameReview: _empty
   },
   Picker: {
-    'header-text': _empty
+    'header-text': _empty,
+    'level': 'region'
   },
   PickerView: {
     'immediate-change': _false,
@@ -1257,6 +1847,8 @@ var components = {
     bindKeyboardHeightChange: _empty
   },
   ScrollView: {
+    'type': "'list'",
+    'event-passive': _false,
     'enable-flex': _false,
     'scroll-anchoring': _false,
     'refresher-enabled': _false,
@@ -1269,14 +1861,33 @@ var components = {
     'show-scrollbar': _true,
     'paging-enabled': _false,
     'fast-deceleration': _false,
+    reverse: _false,
+    'cache-extent': _zero,
+    'scroll-into-view-within-extent': _false,
+    'scroll-into-view-alignment': "'start'",
     bindDragStart: _empty,
     bindDragging: _empty,
     bindDragEnd: _empty,
     bindRefresherPulling: _empty,
     bindRefresherRefresh: _empty,
     bindRefresherRestore: _empty,
-    bindRefresherAbort: _empty
+    bindRefresherAbort: _empty,
+    bindScrollStart: _empty,
+    bindScrollEnd: _empty,
+    bindRefresherWillRefresh: _empty
   },
+  StickySection: {
+    'push-pinned-header': _true
+  },
+  GridView: {
+    type: "'aligned'",
+    'cross-axis-count': '2',
+    'max-cross-axis-extent': _zero,
+    'main-axis-gap': _zero,
+    'cross-axis-gap': _zero
+  },
+  ListView: {},
+  StickyHeader: {},
   Swiper: {
     'snap-to-edge': _false,
     'easing-function': "'default'"
@@ -1504,6 +2115,15 @@ var components = {
   ChannelLive: {
     feedId: _empty,
     finderUserName: _empty
+  },
+  ChannelVideo: {
+    feedId: _empty,
+    finderUserName: _empty,
+    autoplay: _false,
+    loop: _false,
+    muted: _false,
+    objectFit: "'contain'",
+    bindError: _empty
   }
 };
 var hostConfig = {
@@ -1530,10 +2150,11 @@ var hostConfig = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Events": function() { return /* reexport safe */ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events; },
-/* harmony export */   "hooks": function() { return /* reexport safe */ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks; },
 /* harmony export */   "Current": function() { return /* binding */ Current; },
+/* harmony export */   "Events": function() { return /* reexport safe */ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events; },
 /* harmony export */   "FormElement": function() { return /* binding */ FormElement; },
+/* harmony export */   "History": function() { return /* binding */ History; },
+/* harmony export */   "Location": function() { return /* binding */ Location; },
 /* harmony export */   "MutationObserver": function() { return /* binding */ MutationObserver; },
 /* harmony export */   "SVGElement": function() { return /* binding */ SVGElement; },
 /* harmony export */   "Style": function() { return /* binding */ Style; },
@@ -1558,6 +2179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getCurrentInstance": function() { return /* binding */ getCurrentInstance; },
 /* harmony export */   "getPageInstance": function() { return /* binding */ getPageInstance; },
 /* harmony export */   "history": function() { return /* binding */ history; },
+/* harmony export */   "hooks": function() { return /* reexport safe */ _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks; },
 /* harmony export */   "hydrate": function() { return /* binding */ hydrate; },
 /* harmony export */   "incrementId": function() { return /* binding */ incrementId; },
 /* harmony export */   "injectPageInstance": function() { return /* binding */ injectPageInstance; },
@@ -1573,21 +2195,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "stringify": function() { return /* binding */ stringify; },
 /* harmony export */   "window": function() { return /* binding */ window$1; }
 /* harmony export */ });
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_typeof_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/typeof.js */ "../node_modules/@babel/runtime/helpers/esm/typeof.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "../node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_set_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/set.js */ "../node_modules/@babel/runtime/helpers/esm/set.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_toArray_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/toArray.js */ "../node_modules/@babel/runtime/helpers/esm/toArray.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js */ "../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "../node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/get.js */ "../node_modules/@babel/runtime/helpers/esm/get.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_set_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/set.js */ "../node_modules/@babel/runtime/helpers/esm/set.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js */ "../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_toArray_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/toArray.js */ "../node_modules/@babel/runtime/helpers/esm/toArray.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_typeof_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/typeof.js */ "../node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js */ "../node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/inherits.js */ "../node_modules/@babel/runtime/helpers/esm/inherits.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/createSuper.js */ "../node_modules/@babel/runtime/helpers/esm/createSuper.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/get.js */ "../node_modules/@babel/runtime/helpers/esm/get.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js */ "../node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_wrapNativeSuper_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js */ "../node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js");
+/* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_wrapNativeSuper_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js */ "../node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js */ "../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/classCallCheck.js */ "../node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/createClass.js */ "../node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/shared */ "../node_modules/@tarojs/shared/dist/shared.esm.js");
+/* provided dependency */ var window = __webpack_require__(/*! @tarojs/runtime */ "../node_modules/@tarojs/runtime/dist/runtime.esm.js")["window"];
+/* provided dependency */ var document = __webpack_require__(/*! @tarojs/runtime */ "../node_modules/@tarojs/runtime/dist/runtime.esm.js")["document"];
 /* provided dependency */ var requestAnimationFrame = __webpack_require__(/*! @tarojs/runtime */ "../node_modules/@tarojs/runtime/dist/runtime.esm.js")["requestAnimationFrame"];
 /* provided dependency */ var cancelAnimationFrame = __webpack_require__(/*! @tarojs/runtime */ "../node_modules/@tarojs/runtime/dist/runtime.esm.js")["cancelAnimationFrame"];
 
@@ -1657,8 +2281,8 @@ var A = 'a';
 var CONTEXT_ACTIONS;
 (function (CONTEXT_ACTIONS) {
   CONTEXT_ACTIONS["INIT"] = "0";
-  CONTEXT_ACTIONS["RECOVER"] = "1";
-  CONTEXT_ACTIONS["RESTORE"] = "2";
+  CONTEXT_ACTIONS["RESTORE"] = "1";
+  CONTEXT_ACTIONS["RECOVER"] = "2";
   CONTEXT_ACTIONS["DESTORY"] = "3";
 })(CONTEXT_ACTIONS || (CONTEXT_ACTIONS = {}));
 var observers = [];
@@ -1901,68 +2525,109 @@ function getComponentsAlias() {
   }
   return componentsAlias$1;
 }
-var ClassList = /*#__PURE__*/function (_Set) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(ClassList, _Set);
-  var _super = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(ClassList);
+var ClassList = /*#__PURE__*/function () {
   function ClassList(className, el) {
-    var _thisSuper, _this;
+    var _this = this;
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ClassList);
-    _this = _super.call(this);
-    className.trim().split(/\s+/).forEach((0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((_thisSuper = (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this), (0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype)), "add", _thisSuper).bind((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this)));
-    _this.el = el;
-    return _this;
+    this.tokenList = [];
+    this.el = el;
+    className.trim().split(/\s+/).forEach(function (token) {
+      return _this.tokenList.push(token);
+    });
   }
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(ClassList, [{
     key: "value",
     get: function get() {
-      return (0,E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(this).filter(function (v) {
-        return v !== '';
-      }).join(' ');
-    }
-  }, {
-    key: "add",
-    value: function add(s) {
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "add", this).call(this, s);
-      this._update();
-      return this;
+      return this.toString();
     }
   }, {
     key: "length",
     get: function get() {
-      return this.size;
+      return this.tokenList.length;
+    }
+  }, {
+    key: "add",
+    value: function add() {
+      var index = 0;
+      var updated = false;
+      var tokens = arguments;
+      var length = tokens.length;
+      var tokenList = this.tokenList;
+      do {
+        var token = tokens[index];
+        if (this.checkTokenIsValid(token) && !~tokenList.indexOf(token)) {
+          tokenList.push(token);
+          updated = true;
+        }
+      } while (++index < length);
+      if (updated) {
+        this._update();
+      }
     }
   }, {
     key: "remove",
-    value: function remove(s) {
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "delete", this).call(this, s);
-      this._update();
-    }
-  }, {
-    key: "toggle",
-    value: function toggle(s) {
-      if ((0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "has", this).call(this, s)) {
-        (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "delete", this).call(this, s);
-      } else {
-        (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "add", this).call(this, s);
+    value: function remove() {
+      var i = 0;
+      var updated = false;
+      var tokens = arguments;
+      var length = tokens.length;
+      var tokenList = this.tokenList;
+      do {
+        var token = tokens[i] + '';
+        if (!this.checkTokenIsValid(token)) continue;
+        var index = tokenList.indexOf(token);
+        if (~tokenList.indexOf(token)) {
+          tokenList.splice(index, 1);
+          updated = true;
+        }
+      } while (++i < length);
+      if (updated) {
+        this._update();
       }
-      this._update();
-    }
-  }, {
-    key: "replace",
-    value: function replace(s1, s2) {
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "delete", this).call(this, s1);
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "add", this).call(this, s2);
-      this._update();
     }
   }, {
     key: "contains",
-    value: function contains(s) {
-      return (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(ClassList.prototype), "has", this).call(this, s);
+    value: function contains(token) {
+      if (!this.checkTokenIsValid(token)) return false;
+      return !!~this.tokenList.indexOf(token);
+    }
+  }, {
+    key: "toggle",
+    value: function toggle(token, force) {
+      var result = this.contains(token);
+      var method = result ? force !== true && 'remove' : force !== false && 'add';
+      if (method) {
+        // @ts-ignore
+        this[method](token);
+      }
+      if (force === true || force === false) {
+        return force;
+      } else {
+        return !result;
+      }
+    }
+  }, {
+    key: "replace",
+    value: function replace(token, replacement_token) {
+      if (!this.checkTokenIsValid(token) || !this.checkTokenIsValid(replacement_token)) return;
+      var index = this.tokenList.indexOf(token);
+      if (~index) {
+        this.tokenList.splice(index, 1, replacement_token);
+        this._update();
+      }
     }
   }, {
     key: "toString",
     value: function toString() {
-      return this.value;
+      return this.tokenList.filter(function (v) {
+        return v !== '';
+      }).join(' ');
+    }
+  }, {
+    key: "checkTokenIsValid",
+    value: function checkTokenIsValid(token) {
+      if (token === '' || /\s/.test(token)) return false;
+      return true;
     }
   }, {
     key: "_update",
@@ -1971,13 +2636,13 @@ var ClassList = /*#__PURE__*/function (_Set) {
     }
   }]);
   return ClassList;
-}( /*#__PURE__*/(0,E_projects_node_modules_babel_runtime_helpers_esm_wrapNativeSuper_js__WEBPACK_IMPORTED_MODULE_9__["default"])(Set));
+}();
 var EventSource = /*#__PURE__*/function (_Map) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(EventSource, _Map);
-  var _super2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(EventSource);
+  var _super = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(EventSource);
   function EventSource() {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, EventSource);
-    return _super2.apply(this, arguments);
+    return _super.apply(this, arguments);
   }
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(EventSource, [{
     key: "removeNode",
@@ -1999,11 +2664,12 @@ var EventSource = /*#__PURE__*/function (_Map) {
     }
   }]);
   return EventSource;
-}( /*#__PURE__*/(0,E_projects_node_modules_babel_runtime_helpers_esm_wrapNativeSuper_js__WEBPACK_IMPORTED_MODULE_9__["default"])(Map));
+}( /*#__PURE__*/(0,E_projects_node_modules_babel_runtime_helpers_esm_wrapNativeSuper_js__WEBPACK_IMPORTED_MODULE_6__["default"])(Map));
 var eventSource = new EventSource();
+var isWeb$1 = (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)();
 var env = {
-  window:  false ? 0 : _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ,
-  document:  false ? 0 : _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ
+  window: isWeb$1 ? window : _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ,
+  document: isWeb$1 ? document : _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ
 };
 var SPECIAL_NODES;
 var componentsAlias;
@@ -2026,9 +2692,9 @@ function hydrate(node) {
   var nodeName = node.nodeName;
   if (isText(node)) {
     var _ref;
-    return _ref = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_ref, "v" /* Shortcuts.Text */, node.nodeValue), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_ref, "nn" /* Shortcuts.NodeName */, componentsAlias[nodeName]._num), _ref;
+    return _ref = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_ref, "v" /* Shortcuts.Text */, node.nodeValue), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_ref, "nn" /* Shortcuts.NodeName */, componentsAlias[nodeName]._num), _ref;
   }
-  var data = (_data = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_data, "nn" /* Shortcuts.NodeName */, nodeName), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_data, "sid", node.sid), _data);
+  var data = (_data = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_data, "nn" /* Shortcuts.NodeName */, nodeName), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_data, "sid", node.sid), _data);
   if (node.uid !== node.sid) {
     data.uid = node.uid;
   }
@@ -2170,11 +2836,11 @@ var CHILDNODES = "cn" /* Shortcuts.Childnodes */;
 var nodeId = incrementId();
 var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroNode, _TaroEventTarget);
-  var _super3 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroNode);
+  var _super2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroNode);
   function TaroNode() {
     var _this3;
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroNode);
-    _this3 = _super3.call(this);
+    _this3 = _super2.call(this);
     _this3.parentNode = null;
     _this3.childNodes = [];
     _this3.hydrate = function (node) {
@@ -2184,7 +2850,7 @@ var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
     };
     _this3.uid = '_' + nodeId(); // dom 节点 id，开发者可修改
     _this3.sid = _this3.uid; // dom 节点全局唯一 id，不可被修改
-    eventSource.set(_this3.sid, (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this3));
+    eventSource.set(_this3.sid, (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this3));
     return _this3;
   }
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(TaroNode, [{
@@ -2474,7 +3140,7 @@ var TaroNode = /*#__PURE__*/function (_TaroEventTarget) {
  * https://www.w3.org/Style/CSS/all-properties.en.html
  */
 var WEBKIT = 'webkit';
-var styleProperties = ['all', 'appearance', 'blockOverflow', 'blockSize', 'bottom', 'clear', 'contain', 'content', 'continue', 'cursor', 'direction', 'display', 'filter', 'float', 'gap', 'height', 'inset', 'isolation', 'left', 'letterSpacing', 'lightingColor', 'markerSide', 'mixBlendMode', 'opacity', 'order', 'position', 'quotes', 'resize', 'right', 'rowGap', 'tabSize', 'tableLayout', 'top', 'userSelect', 'verticalAlign', 'visibility', 'voiceFamily', 'volume', 'whiteSpace', 'widows', 'width', 'zIndex', 'pointerEvents'
+var styleProperties = ['all', 'appearance', 'blockOverflow', 'blockSize', 'bottom', 'clear', 'contain', 'content', 'continue', 'cursor', 'direction', 'display', 'filter', 'float', 'gap', 'height', 'inset', 'isolation', 'left', 'letterSpacing', 'lightingColor', 'markerSide', 'mixBlendMode', 'opacity', 'order', 'position', 'quotes', 'resize', 'right', 'rowGap', 'tabSize', 'tableLayout', 'top', 'userSelect', 'verticalAlign', 'visibility', 'voiceFamily', 'volume', 'whiteSpace', 'widows', 'width', 'zIndex', 'pointerEvents', 'aspectRatio'
 /** 非常用 style */
 // 'azimuth',
 // 'backfaceVisibility',
@@ -2639,10 +3305,13 @@ function setStyle(newVal, styleKey) {
   }
   !this._pending && enqueueUpdate(this);
 }
-function initStyle(ctor) {
+function initStyle(ctor, styleProperties) {
   var properties = {};
   var _loop = function _loop() {
     var styleKey = styleProperties[i];
+    if (ctor[styleKey]) return {
+      v: void 0
+    };
     properties[styleKey] = {
       get: function get() {
         var val = this._value[styleKey];
@@ -2654,7 +3323,8 @@ function initStyle(ctor) {
     };
   };
   for (var i = 0; i < styleProperties.length; i++) {
-    _loop();
+    var _ret = _loop();
+    if ((0,E_projects_node_modules_babel_runtime_helpers_esm_typeof_js__WEBPACK_IMPORTED_MODULE_9__["default"])(_ret) === "object") return _ret.v;
   }
   Object.defineProperties(ctor.prototype, properties);
 }
@@ -2720,7 +3390,7 @@ var Style = /*#__PURE__*/function () {
         }
         // 可能存在 'background: url(http:x/y/z)' 的情况
         var _rule$split = rule.split(':'),
-          _rule$split2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_toArray_js__WEBPACK_IMPORTED_MODULE_11__["default"])(_rule$split),
+          _rule$split2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_toArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_rule$split),
           propName = _rule$split2[0],
           valList = _rule$split2.slice(1);
         var val = valList.join(':');
@@ -2771,7 +3441,15 @@ var Style = /*#__PURE__*/function () {
   }]);
   return Style;
 }();
-initStyle(Style);
+initStyle(Style, styleProperties);
+_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.tap('injectNewStyleProperties', function (newStyleProperties) {
+  if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isArray)(newStyleProperties)) {
+    initStyle(Style, newStyleProperties);
+  } else {
+    if (typeof newStyleProperties !== 'string') return;
+    initStyle(Style, [newStyleProperties]);
+  }
+});
 function returnTrue() {
   return true;
 }
@@ -2789,7 +3467,9 @@ function treeToArray(root, predict) {
 }
 function following(el, root) {
   var firstChild = el.firstChild;
-  if (firstChild) {
+  var isElmentTypeValid = el.nodeType === 1 /* NodeType.ELEMENT_NODE */ || el.nodeType === 9 /* NodeType.DOCUMENT_NODE */;
+  // 如果当前 el 不是 element 或 document 元素，则可以直接不递归他的子元素了
+  if (firstChild && isElmentTypeValid) {
     return firstChild;
   }
   var current = el;
@@ -2807,16 +3487,16 @@ function following(el, root) {
 }
 var TaroElement = /*#__PURE__*/function (_TaroNode) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroElement, _TaroNode);
-  var _super4 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroElement);
+  var _super3 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroElement);
   function TaroElement() {
     var _this9;
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroElement);
-    _this9 = _super4.call(this);
+    _this9 = _super3.call(this);
     _this9.props = {};
     _this9.dataset = _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ;
     _this9.nodeType = 1 /* NodeType.ELEMENT_NODE */;
-    _this9.style = new Style((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this9));
-    _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('patchElement', (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this9));
+    _this9.style = new Style((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this9));
+    _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('patchElement', (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this9));
     return _this9;
   }
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(TaroElement, [{
@@ -2895,7 +3575,7 @@ var TaroElement = /*#__PURE__*/function (_TaroNode) {
       return text;
     },
     set: function set(text) {
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_set_js__WEBPACK_IMPORTED_MODULE_12__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(TaroElement.prototype), "textContent", text, this, true);
+      (0,E_projects_node_modules_babel_runtime_helpers_esm_set_js__WEBPACK_IMPORTED_MODULE_11__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(TaroElement.prototype), "textContent", text, this, true);
     }
   }, {
     key: "hasAttribute",
@@ -3075,11 +3755,11 @@ var TaroElement = /*#__PURE__*/function (_TaroNode) {
   }, {
     key: "getElementsByClassName",
     value: function getElementsByClassName(className) {
+      var classNames = className.trim().split(/\s+/);
       return treeToArray(this, function (el) {
         var classList = el.classList;
-        var classNames = className.trim().split(/\s+/);
         return classNames.every(function (c) {
-          return classList.has(c);
+          return classList.contains(c);
         });
       });
     }
@@ -3135,13 +3815,13 @@ var TaroElement = /*#__PURE__*/function (_TaroNode) {
           value: alias
         });
       }
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(TaroElement.prototype), "addEventListener", this).call(this, type, handler, options);
+      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(TaroElement.prototype), "addEventListener", this).call(this, type, handler, options);
     }
   }, {
     key: "removeEventListener",
     value: function removeEventListener(type, handler) {
       var sideEffect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(TaroElement.prototype), "removeEventListener", this).call(this, type, handler);
+      (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(TaroElement.prototype), "removeEventListener", this).call(this, type, handler);
       var name = this.nodeName;
       var SPECIAL_NODES = _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getSpecialNodes');
       if (sideEffect !== false && !this.isAnyEventBinded() && SPECIAL_NODES.indexOf(name) > -1) {
@@ -3609,7 +4289,7 @@ var StyleTagParser = /*#__PURE__*/function () {
         // 属性选择器
         item = item.replace(/\[(.+?)\]/g, function (_, $1) {
           var _$1$split = $1.split('='),
-            _$1$split2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__["default"])(_$1$split, 2),
+            _$1$split2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__["default"])(_$1$split, 2),
             key = _$1$split2[0],
             value = _$1$split2[1];
           var all = $1.indexOf('=') === -1;
@@ -3880,7 +4560,7 @@ function format(children, document, styleOptions, parent) {
     for (var i = 0; i < child.attributes.length; i++) {
       var attr = child.attributes[i];
       var _splitEqual = splitEqual(attr),
-        _splitEqual2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__["default"])(_splitEqual, 2),
+        _splitEqual2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__["default"])(_splitEqual, 2),
         key = _splitEqual2[0],
         value = _splitEqual2[1];
       if (key === 'class') {
@@ -4097,7 +4777,7 @@ function cloneNode() {
   }
   for (var key in this) {
     var value = this[key];
-    if ([PROPS, DATASET].includes(key) && (0,E_projects_node_modules_babel_runtime_helpers_esm_typeof_js__WEBPACK_IMPORTED_MODULE_14__["default"])(value) === OBJECT) {
+    if ([PROPS, DATASET].includes(key) && (0,E_projects_node_modules_babel_runtime_helpers_esm_typeof_js__WEBPACK_IMPORTED_MODULE_9__["default"])(value) === OBJECT) {
       newNode[key] = Object.assign({}, value);
     } else if (key === '_value') {
       newNode[key] = value;
@@ -4124,7 +4804,7 @@ function contains(node) {
   });
   return isContains;
 }
-if (true) {
+if (!(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)()) {
   if (true) {
     TaroNode.extend('innerHTML', {
       set: function set(html) {
@@ -4268,11 +4948,11 @@ function getEventCBResult(event) {
 function eventHandler(event) {
   var _a, _b;
   // Note: ohos 上事件没有设置 type、detail 类型 setter 方法，且部分事件（例如 load 等）缺失 target 导致事件错误
-  !event.type && Object.defineProperty(event, 'type', {
+  event.type === undefined && Object.defineProperty(event, 'type', {
     value: event._type // ohos only
   });
 
-  !event.detail && Object.defineProperty(event, 'detail', {
+  event.detail === undefined && Object.defineProperty(event, 'detail', {
     value: event._detail || Object.assign({}, event) // ohos only
   });
 
@@ -4313,10 +4993,10 @@ function eventHandler(event) {
 }
 var FormElement = /*#__PURE__*/function (_TaroElement) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(FormElement, _TaroElement);
-  var _super5 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(FormElement);
+  var _super4 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(FormElement);
   function FormElement() {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, FormElement);
-    return _super5.apply(this, arguments);
+    return _super4.apply(this, arguments);
   }
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(FormElement, [{
     key: "value",
@@ -4342,7 +5022,7 @@ var FormElement = /*#__PURE__*/function (_TaroElement) {
           this.value = val;
         }
       }
-      return (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(FormElement.prototype), "dispatchEvent", this).call(this, event);
+      return (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(FormElement.prototype), "dispatchEvent", this).call(this, event);
     }
   }]);
   return FormElement;
@@ -4390,6 +5070,11 @@ function findCustomWrapper(root, dataPathArr) {
     // 'cn' => 'childNodes'
     .replace(/\bcn\b/g, 'childNodes');
     currentData = currentData[key];
+    if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isArray)(currentData)) {
+      currentData = currentData.filter(function (el) {
+        return !isComment(el);
+      });
+    }
     if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isUndefined)(currentData)) return true;
     if (currentData.nodeName === CUSTOM_WRAPPER) {
       var res = customWrapperCache.get(currentData.sid);
@@ -4408,11 +5093,11 @@ function findCustomWrapper(root, dataPathArr) {
 }
 var TaroRootElement = /*#__PURE__*/function (_TaroElement2) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroRootElement, _TaroElement2);
-  var _super6 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroRootElement);
+  var _super5 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroRootElement);
   function TaroRootElement() {
     var _this15;
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroRootElement);
-    _this15 = _super6.call(this);
+    _this15 = _super5.call(this);
     _this15.updatePayloads = [];
     _this15.updateCallbacks = [];
     _this15.pendingUpdate = false;
@@ -4495,7 +5180,7 @@ var TaroRootElement = /*#__PURE__*/function (_TaroElement2) {
               var customWrapper = found.customWrapper,
                 splitedPath = found.splitedPath;
               // 合并同一个 customWrapper 的相关更新到一次 setData 中
-              customWrapperMap.set(customWrapper, Object.assign(Object.assign({}, customWrapperMap.get(customWrapper) || {}), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])({}, "i.".concat(splitedPath), data[p])));
+              customWrapperMap.set(customWrapper, Object.assign(Object.assign({}, customWrapperMap.get(customWrapper) || {}), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])({}, "i.".concat(splitedPath), data[p])));
             } else {
               // 此项数据使用页面去更新
               normalUpdate[p] = data[p];
@@ -4556,11 +5241,11 @@ var TaroRootElement = /*#__PURE__*/function (_TaroElement2) {
 }(TaroElement);
 var TaroText = /*#__PURE__*/function (_TaroNode2) {
   (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroText, _TaroNode2);
-  var _super7 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroText);
+  var _super6 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroText);
   function TaroText(value) {
     var _this17;
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroText);
-    _this17 = _super7.call(this);
+    _this17 = _super6.call(this);
     _this17.nodeType = 3 /* NodeType.TEXT_NODE */;
     _this17.nodeName = '#text';
     _this17._value = value;
@@ -4627,673 +5312,6 @@ function __classPrivateFieldSet(receiver, state, value, kind, f) {
   if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
   return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 }
-var Current = {
-  app: null,
-  router: null,
-  page: null
-};
-var getCurrentInstance = function getCurrentInstance() {
-  return Current;
-};
-var eventCenter = _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getEventCenter', _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events);
-
-/**
- * 一个小型缓存池，用于在切换页面时，存储一些上下文信息
- */
-var RuntimeCache = /*#__PURE__*/function () {
-  function RuntimeCache(name) {
-    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, RuntimeCache);
-    this.cache = new Map();
-    this.name = name;
-  }
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(RuntimeCache, [{
-    key: "has",
-    value: function has(identifier) {
-      return this.cache.has(identifier);
-    }
-  }, {
-    key: "set",
-    value: function set(identifier, ctx) {
-      if (identifier && ctx) {
-        this.cache.set(identifier, ctx);
-      }
-    }
-  }, {
-    key: "get",
-    value: function get(identifier) {
-      if (this.has(identifier)) return this.cache.get(identifier);
-    }
-  }, {
-    key: "delete",
-    value: function _delete(identifier) {
-      this.cache.delete(identifier);
-    }
-  }]);
-  return RuntimeCache;
-}();
-var _Location_instances, _Location_hash, _Location_hostname, _Location_pathname, _Location_port, _Location_protocol, _Location_search, _Location_noCheckUrl, _Location_window, _Location_reset, _Location_getPreValue, _Location_rollBack, _Location_recordHistory, _Location_checkUrlChange;
-var DEFAULT_HOSTNAME = 'taro.com';
-var cache$1 = new RuntimeCache('location');
-var Location = /*#__PURE__*/function (_Events) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(Location, _Events);
-  var _super8 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(Location);
-  function Location(options) {
-    var _this18;
-    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Location);
-    _this18 = _super8.call(this);
-    _Location_instances.add((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18));
-    /* private property */
-    _Location_hash.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), '');
-    _Location_hostname.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), DEFAULT_HOSTNAME);
-    _Location_pathname.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), '/');
-    _Location_port.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), '');
-    _Location_protocol.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), 'https:');
-    _Location_search.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), '');
-    _Location_noCheckUrl.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), false);
-    _Location_window.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), void 0);
-    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_window, options.window, "f");
-    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_instances, "m", _Location_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18));
-    _this18.on('__set_href_without_history__', function (href) {
-      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_noCheckUrl, true, "f");
-      var lastHash = __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_hash, "f");
-      _this18.href = generateFullUrl(href);
-      if (lastHash !== __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_hash, "f")) {
-        __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_window, "f").trigger('hashchange');
-      }
-      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_noCheckUrl, false, "f");
-    }, null);
-    // 切换上下文行为
-    _this18.on(CONTEXT_ACTIONS.INIT, function () {
-      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_instances, "m", _Location_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18));
-    }, null);
-    _this18.on(CONTEXT_ACTIONS.RESTORE, function (pageId) {
-      cache$1.set(pageId, {
-        lastHref: _this18.href
-      });
-    }, null);
-    _this18.on(CONTEXT_ACTIONS.RECOVER, function (pageId) {
-      // 数据恢复时，不需要执行跳转
-      if (cache$1.has(pageId)) {
-        var ctx = cache$1.get(pageId);
-        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_noCheckUrl, true, "f");
-        _this18.href = ctx.lastHref;
-        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this18), _Location_noCheckUrl, false, "f");
-      }
-    }, null);
-    _this18.on(CONTEXT_ACTIONS.DESTORY, function (pageId) {
-      cache$1.delete(pageId);
-    }, null);
-    return _this18;
-  }
-  /* public property */
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Location, [{
-    key: "protocol",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_protocol, "f");
-    },
-    set: function set(val) {
-      var reg = /^(http|https):?$/i;
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !reg.test(val.trim())) return;
-      val = val.trim();
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_protocol, val.endsWith(':') ? val : "".concat(val, ":"), "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "host",
-    get: function get() {
-      return (__classPrivateFieldGet(this, _Location_hostname, "f") || '') + (__classPrivateFieldGet(this, _Location_port, "f") ? ':' + __classPrivateFieldGet(this, _Location_port, "f") : '');
-    },
-    set: function set(val) {
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
-      val = val.trim();
-      var _parseUrl = parseUrl("//".concat(val)),
-        hostname = _parseUrl.hostname,
-        port = _parseUrl.port;
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_hostname, hostname, "f");
-      __classPrivateFieldSet(this, _Location_port, port, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "hostname",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_hostname, "f");
-    },
-    set: function set(val) {
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
-      val = val.trim();
-      var _parseUrl2 = parseUrl("//".concat(val)),
-        hostname = _parseUrl2.hostname;
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_hostname, hostname, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "port",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_port, "f");
-    },
-    set: function set(val) {
-      var xVal = Number(val = val.trim());
-      if (!(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isNumber)(xVal) || xVal <= 0) return;
-      if (val === __classPrivateFieldGet(this, _Location_port, "f")) return;
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_port, val, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "pathname",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_pathname, "f");
-    },
-    set: function set(val) {
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
-      val = val.trim();
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      var newPathName = '';
-      if (val.startsWith('/')) {
-        newPathName = __classPrivateFieldGet(this, _Location_pathname, "f") + val;
-      } else if (val.startsWith('./')) {
-        val = val.replace(/\.\//, '/');
-        newPathName = __classPrivateFieldGet(this, _Location_pathname, "f") + val;
-      } else if (val.startsWith('../')) {
-        newPathName = resolveRelativePath(val, preValue.pathname);
-      }
-      var _parseUrl3 = parseUrl("//".concat(DEFAULT_HOSTNAME).concat(newPathName)),
-        pathname = _parseUrl3.pathname,
-        search = _parseUrl3.search,
-        hash = _parseUrl3.hash;
-      __classPrivateFieldSet(this, _Location_pathname, pathname, "f");
-      __classPrivateFieldSet(this, _Location_search, search, "f");
-      __classPrivateFieldSet(this, _Location_hash, hash, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "search",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_search, "f");
-    },
-    set: function set(val) {
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
-      val = val.trim();
-      val = val.startsWith('?') ? val : "?".concat(val);
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      var _parseUrl4 = parseUrl("//".concat(DEFAULT_HOSTNAME).concat(val)),
-        search = _parseUrl4.search;
-      __classPrivateFieldSet(this, _Location_search, search, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "hash",
-    get: function get() {
-      return __classPrivateFieldGet(this, _Location_hash, "f");
-    }
-    // 小程序的navigateTo存在截断hash字符串的问题
-    ,
-    set: function set(val) {
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
-      val = val.trim();
-      val = val.startsWith('#') ? val : "#".concat(val);
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      var _parseUrl5 = parseUrl("//".concat(DEFAULT_HOSTNAME).concat(val)),
-        hash = _parseUrl5.hash;
-      __classPrivateFieldSet(this, _Location_hash, hash, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "href",
-    get: function get() {
-      return "".concat(__classPrivateFieldGet(this, _Location_protocol, "f"), "//").concat(this.host).concat(__classPrivateFieldGet(this, _Location_pathname, "f")).concat(__classPrivateFieldGet(this, _Location_search, "f")).concat(__classPrivateFieldGet(this, _Location_hash, "f"));
-    },
-    set: function set(val) {
-      var reg = /^(http:|https:)?\/\/.+/;
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !reg.test(val = val.trim())) return;
-      var _parseUrl6 = parseUrl(val),
-        protocol = _parseUrl6.protocol,
-        hostname = _parseUrl6.hostname,
-        port = _parseUrl6.port,
-        hash = _parseUrl6.hash,
-        search = _parseUrl6.search,
-        pathname = _parseUrl6.pathname;
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_protocol, protocol, "f");
-      __classPrivateFieldSet(this, _Location_hostname, hostname, "f");
-      __classPrivateFieldSet(this, _Location_port, port, "f");
-      __classPrivateFieldSet(this, _Location_pathname, pathname, "f");
-      __classPrivateFieldSet(this, _Location_search, search, "f");
-      __classPrivateFieldSet(this, _Location_hash, hash, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-  }, {
-    key: "origin",
-    get: function get() {
-      return "".concat(__classPrivateFieldGet(this, _Location_protocol, "f"), "//").concat(this.host);
-    },
-    set: function set(val) {
-      var reg = /^(http:|https:)?\/\/.+/;
-      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !reg.test(val = val.trim())) return;
-      var _parseUrl7 = parseUrl(val),
-        protocol = _parseUrl7.protocol,
-        hostname = _parseUrl7.hostname,
-        port = _parseUrl7.port;
-      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
-      __classPrivateFieldSet(this, _Location_protocol, protocol, "f");
-      __classPrivateFieldSet(this, _Location_hostname, hostname, "f");
-      __classPrivateFieldSet(this, _Location_port, port, "f");
-      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
-    }
-    /* public method */
-  }, {
-    key: "assign",
-    value: function assign() {
-      (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.warn)(true, '小程序环境中调用location.assign()无效.');
-    }
-  }, {
-    key: "reload",
-    value: function reload() {
-      (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.warn)(true, '小程序环境中调用location.reload()无效.');
-    }
-  }, {
-    key: "replace",
-    value: function replace(val) {
-      this.trigger('__set_href_without_history__', val);
-    }
-  }, {
-    key: "toString",
-    value: function toString() {
-      return this.href;
-    }
-    // For debug
-  }, {
-    key: "cache",
-    get: function get() {
-      return cache$1;
-    }
-  }]);
-  return Location;
-}(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events);
-_Location_hash = new WeakMap(), _Location_hostname = new WeakMap(), _Location_pathname = new WeakMap(), _Location_port = new WeakMap(), _Location_protocol = new WeakMap(), _Location_search = new WeakMap(), _Location_noCheckUrl = new WeakMap(), _Location_window = new WeakMap(), _Location_instances = new WeakSet(), _Location_reset = function _Location_reset() {
-  var Current = getCurrentInstance();
-  var router = Current.router;
-  if (router) {
-    var path = router.path,
-      params = router.params;
-    var searchArr = Object.keys(params).map(function (key) {
-      return "".concat(key, "=").concat(params[key]);
-    });
-    var searchStr = searchArr.length > 0 ? '?' + searchArr.join('&') : '';
-    var url = "https://".concat(DEFAULT_HOSTNAME).concat(path.startsWith('/') ? path : '/' + path).concat(searchStr);
-    // 初始化页面链接时，默认pathname为 "/"
-    // const url = `https://${DEFAULT_HOSTNAME}${searchStr}`
-    var _parseUrl8 = parseUrl(url),
-      protocol = _parseUrl8.protocol,
-      hostname = _parseUrl8.hostname,
-      port = _parseUrl8.port,
-      pathname = _parseUrl8.pathname,
-      search = _parseUrl8.search,
-      hash = _parseUrl8.hash;
-    __classPrivateFieldSet(this, _Location_protocol, protocol, "f");
-    __classPrivateFieldSet(this, _Location_hostname, hostname, "f");
-    __classPrivateFieldSet(this, _Location_port, port, "f");
-    __classPrivateFieldSet(this, _Location_pathname, pathname, "f");
-    __classPrivateFieldSet(this, _Location_search, search, "f");
-    __classPrivateFieldSet(this, _Location_hash, hash, "f");
-    this.trigger('__reset_history__', this.href);
-  }
-}, _Location_getPreValue = function _Location_getPreValue() {
-  return {
-    protocol: __classPrivateFieldGet(this, _Location_protocol, "f"),
-    hostname: __classPrivateFieldGet(this, _Location_hostname, "f"),
-    port: __classPrivateFieldGet(this, _Location_port, "f"),
-    pathname: __classPrivateFieldGet(this, _Location_pathname, "f"),
-    search: __classPrivateFieldGet(this, _Location_search, "f"),
-    hash: __classPrivateFieldGet(this, _Location_hash, "f")
-  };
-}, _Location_rollBack = function _Location_rollBack(preValue) {
-  __classPrivateFieldSet(this, _Location_protocol, preValue.protocol, "f");
-  __classPrivateFieldSet(this, _Location_hostname, preValue.hostname, "f");
-  __classPrivateFieldSet(this, _Location_port, preValue.port, "f");
-  __classPrivateFieldSet(this, _Location_pathname, preValue.pathname, "f");
-  __classPrivateFieldSet(this, _Location_search, preValue.search, "f");
-  __classPrivateFieldSet(this, _Location_hash, preValue.hash, "f");
-}, _Location_recordHistory = function _Location_recordHistory() {
-  this.trigger('__record_history__', this.href);
-}, _Location_checkUrlChange = function _Location_checkUrlChange(preValue) {
-  if (__classPrivateFieldGet(this, _Location_noCheckUrl, "f")) {
-    return false;
-  }
-  // 跨域三要素不允许修改
-  if (__classPrivateFieldGet(this, _Location_protocol, "f") !== preValue.protocol || __classPrivateFieldGet(this, _Location_hostname, "f") !== preValue.hostname || this.port !== preValue.port) {
-    __classPrivateFieldGet(this, _Location_instances, "m", _Location_rollBack).call(this, preValue);
-    return false;
-  }
-  // pathname
-  if (__classPrivateFieldGet(this, _Location_pathname, "f") !== preValue.pathname) {
-    return true;
-  }
-  // search
-  if (__classPrivateFieldGet(this, _Location_search, "f") !== preValue.search) {
-    return true;
-  }
-  // hashchange
-  if (__classPrivateFieldGet(this, _Location_hash, "f") !== preValue.hash) {
-    __classPrivateFieldGet(this, _Location_window, "f").trigger('hashchange');
-    return true;
-  }
-  __classPrivateFieldGet(this, _Location_instances, "m", _Location_rollBack).call(this, preValue);
-  return false;
-};
-function resolveRelativePath(path, relative) {
-  var relativeArr = relative.split('/');
-  var parent = relativeArr.slice(0, relativeArr.length - 1);
-  var depth = 0;
-  var dests = path.split('../').map(function (v) {
-    v === '' && depth++;
-    return v;
-  });
-  if (depth > parent.length) return relative;
-  return parent.slice(0, parent.length - depth).concat(dests.filter(function (v) {
-    return v !== '';
-  })).join('/');
-}
-function generateFullUrl() {
-  var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var origin = "https://".concat(DEFAULT_HOSTNAME);
-  if (val.startsWith('/')) {
-    return origin + val;
-  }
-  if (val.startsWith('?')) {
-    return origin + val;
-  }
-  if (val.startsWith('#')) {
-    return origin + val;
-  }
-  if (/(https?:)?\/\//.test(val)) {
-    return val;
-  }
-  return val;
-}
-function parseUrl() {
-  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var result = {
-    href: '',
-    origin: '',
-    protocol: '',
-    hostname: '',
-    host: '',
-    port: '',
-    pathname: '',
-    search: '',
-    hash: ''
-  };
-  if (!url || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(url)) return result;
-  url = url.trim();
-  var PATTERN = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-  var matches = url.match(PATTERN);
-  if (!matches) return result;
-  // TODO: username & password ?
-  result.protocol = matches[1] || 'https:';
-  result.hostname = matches[6] || DEFAULT_HOSTNAME;
-  result.port = matches[8] || '';
-  result.pathname = matches[9] || '/';
-  result.search = matches[10] || '';
-  result.hash = matches[12] || '';
-  result.href = url;
-  result.origin = result.protocol + '//' + result.hostname;
-  result.host = result.hostname + (result.port ? ":".concat(result.port) : '');
-  return result;
-}
-var AnchorElement = /*#__PURE__*/function (_TaroElement3) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(AnchorElement, _TaroElement3);
-  var _super9 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(AnchorElement);
-  function AnchorElement() {
-    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, AnchorElement);
-    return _super9.apply(this, arguments);
-  }
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(AnchorElement, [{
-    key: "href",
-    get: function get() {
-      var _a;
-      return (_a = this.props["href" /* AnchorElementAttrs.HREF */]) !== null && _a !== void 0 ? _a : '';
-    },
-    set: function set(val) {
-      this.setAttribute("href" /* AnchorElementAttrs.HREF */, val);
-    }
-  }, {
-    key: "protocol",
-    get: function get() {
-      var _a;
-      return (_a = this.props["protocol" /* AnchorElementAttrs.PROTOCOL */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "host",
-    get: function get() {
-      var _a;
-      return (_a = this.props["host" /* AnchorElementAttrs.HOST */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "search",
-    get: function get() {
-      var _a;
-      return (_a = this.props["search" /* AnchorElementAttrs.SEARCH */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "hash",
-    get: function get() {
-      var _a;
-      return (_a = this.props["hash" /* AnchorElementAttrs.HASH */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "hostname",
-    get: function get() {
-      var _a;
-      return (_a = this.props["hostname" /* AnchorElementAttrs.HOSTNAME */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "port",
-    get: function get() {
-      var _a;
-      return (_a = this.props["port" /* AnchorElementAttrs.PORT */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "pathname",
-    get: function get() {
-      var _a;
-      return (_a = this.props["pathname" /* AnchorElementAttrs.PATHNAME */]) !== null && _a !== void 0 ? _a : '';
-    }
-  }, {
-    key: "setAttribute",
-    value: function setAttribute(qualifiedName, value) {
-      if (qualifiedName === "href" /* AnchorElementAttrs.HREF */) {
-        var willSetAttr = parseUrl(value);
-        for (var k in willSetAttr) {
-          (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(AnchorElement.prototype), "setAttribute", this).call(this, k, willSetAttr[k]);
-        }
-      } else {
-        (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_6__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_8__["default"])(AnchorElement.prototype), "setAttribute", this).call(this, qualifiedName, value);
-      }
-    }
-  }]);
-  return AnchorElement;
-}(TaroElement);
-var TaroDocument = /*#__PURE__*/function (_TaroElement4) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroDocument, _TaroElement4);
-  var _super10 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroDocument);
-  function TaroDocument() {
-    var _this19;
-    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroDocument);
-    _this19 = _super10.call(this);
-    _this19.createEvent = createEvent;
-    _this19.nodeType = 9 /* NodeType.DOCUMENT_NODE */;
-    _this19.nodeName = DOCUMENT_ELEMENT_NAME;
-    return _this19;
-  }
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(TaroDocument, [{
-    key: "createElement",
-    value: function createElement(type) {
-      var nodeName = type.toLowerCase();
-      var element;
-      switch (true) {
-        case nodeName === ROOT_STR:
-          element = new TaroRootElement();
-          return element;
-        case _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.controlledComponent.has(nodeName):
-          element = new FormElement();
-          break;
-        case nodeName === A:
-          element = new AnchorElement();
-          break;
-        default:
-          element = new TaroElement();
-          break;
-      }
-      element.nodeName = nodeName;
-      element.tagName = type.toUpperCase();
-      return element;
-    }
-    // an ugly fake createElementNS to deal with @vue/runtime-dom's
-    // support mounting app to svg container since vue@3.0.8
-  }, {
-    key: "createElementNS",
-    value: function createElementNS(_svgNS, type) {
-      return this.createElement(type);
-    }
-  }, {
-    key: "createTextNode",
-    value: function createTextNode(text) {
-      return new TaroText(text);
-    }
-  }, {
-    key: "getElementById",
-    value: function getElementById(id) {
-      var el = eventSource.get(id);
-      return (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isUndefined)(el) ? null : el;
-    }
-  }, {
-    key: "querySelector",
-    value: function querySelector(query) {
-      // 为了 Vue3 的乞丐版实现
-      if (/^#/.test(query)) {
-        return this.getElementById(query.slice(1));
-      }
-      return null;
-    }
-  }, {
-    key: "querySelectorAll",
-    value: function querySelectorAll() {
-      // fake hack
-      return [];
-    }
-    // @TODO: @PERF: 在 hydrate 移除掉空的 node
-  }, {
-    key: "createComment",
-    value: function createComment() {
-      var textnode = new TaroText('');
-      textnode.nodeName = COMMENT;
-      return textnode;
-    }
-  }, {
-    key: "defaultView",
-    get: function get() {
-      return env.window;
-    }
-  }]);
-  return TaroDocument;
-}(TaroElement);
-var document$1;
-if (true) {
-  /* eslint-disable no-inner-declarations */
-  var createDocument = function createDocument() {
-    /**
-       * <document>
-       *   <html>
-       *     <head></head>
-       *     <body>
-       *       <container>
-       *         <app id="app" />
-       *       </container>
-       *     </body>
-       *   </html>
-       * </document>
-       */
-    var doc = new TaroDocument();
-    var documentCreateElement = doc.createElement.bind(doc);
-    var html = documentCreateElement(HTML);
-    var head = documentCreateElement(HEAD);
-    var body = documentCreateElement(BODY);
-    var app = documentCreateElement(APP);
-    app.id = APP;
-    var container = documentCreateElement(CONTAINER); // 多包一层主要为了兼容 vue
-    doc.appendChild(html);
-    html.appendChild(head);
-    html.appendChild(body);
-    body.appendChild(container);
-    container.appendChild(app);
-    doc.documentElement = html;
-    doc.head = head;
-    doc.body = body;
-    return doc;
-  };
-  document$1 = env.document = createDocument();
-} else {}
-function getComputedStyle(element) {
-  return element.style;
-}
-var machine = 'Macintosh';
-var arch = 'Intel Mac OS X 10_14_5';
-var engine = 'AppleWebKit/534.36 (KHTML, like Gecko) NodeJS/v4.1.0 Chrome/76.0.3809.132 Safari/534.36';
-var msg = '(' + machine + '; ' + arch + ') ' + engine;
-var nav =  false ? 0 : {
-  appCodeName: 'Mozilla',
-  appName: 'Netscape',
-  appVersion: '5.0 ' + msg,
-  cookieEnabled: true,
-  mimeTypes: [],
-  onLine: true,
-  platform: 'MacIntel',
-  plugins: [],
-  product: 'Taro',
-  productSub: '20030107',
-  userAgent: 'Mozilla/5.0 ' + msg,
-  vendor: 'Joyent',
-  vendorSub: ''
-};
-
-// https://github.com/myrne/performance-now
-var now;
-(function () {
-  var loadTime;
-  if (typeof performance !== 'undefined' && performance !== null && performance.now) {
-    now = function now() {
-      return performance.now();
-    };
-  } else if (Date.now) {
-    loadTime = Date.now();
-    now = function now() {
-      return Date.now() - loadTime;
-    };
-  } else {
-    loadTime = new Date().getTime();
-    now = function now() {
-      return new Date().getTime() - loadTime;
-    };
-  }
-})();
-var lastTime = 0;
-// https://gist.github.com/paulirish/1579671
-// https://gist.github.com/jalbam/5fe05443270fa6d8136238ec72accbc0
-var _raf = typeof requestAnimationFrame !== 'undefined' && requestAnimationFrame !== null ? requestAnimationFrame : function (callback) {
-  var _now = now();
-  var nextTime = Math.max(lastTime + 16, _now); // First time will execute it immediately but barely noticeable and performance is gained.
-  return setTimeout(function () {
-    callback(lastTime = nextTime);
-  }, nextTime - _now);
-};
-var _caf = typeof cancelAnimationFrame !== 'undefined' && cancelAnimationFrame !== null ? cancelAnimationFrame : function (seed) {
-  // fix https://github.com/NervJS/taro/issues/7749
-  clearTimeout(seed);
-};
 var _URLSearchParams_dict;
 var findReg = /[!'()~]|%20|%00/g;
 var plusReg = /\+/g;
@@ -5326,7 +5344,7 @@ var URLSearchParams = /*#__PURE__*/function () {
   function URLSearchParams(query) {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, URLSearchParams);
     _URLSearchParams_dict.set(this, Object.create(null));
-    if (!query) return;
+    query !== null && query !== void 0 ? query : query = '';
     var dict = __classPrivateFieldGet(this, _URLSearchParams_dict, "f");
     if (typeof query === 'string') {
       if (query.charAt(0) === '?') {
@@ -5435,7 +5453,7 @@ var URL = /*#__PURE__*/function () {
     _URL_pathname.set(this, '');
     _URL_port.set(this, '');
     _URL_protocol.set(this, '');
-    _URL_search.set(this, '');
+    _URL_search.set(this, void 0);
     if (!(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(url)) url = String(url);
     var parseResult = parseUrlBase(url, base);
     var hash = parseResult.hash,
@@ -5449,12 +5467,12 @@ var URL = /*#__PURE__*/function () {
     __classPrivateFieldSet(this, _URL_pathname, pathname || '/', "f");
     __classPrivateFieldSet(this, _URL_port, port, "f");
     __classPrivateFieldSet(this, _URL_protocol, protocol, "f");
-    __classPrivateFieldSet(this, _URL_search, search, "f");
+    __classPrivateFieldSet(this, _URL_search, new URLSearchParams(search), "f");
   }
+  /* public property */
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(URL, [{
     key: "protocol",
-    get: /* public property */
-    function get() {
+    get: function get() {
       return __classPrivateFieldGet(this, _URL_protocol, "f");
     },
     set: function set(val) {
@@ -5468,9 +5486,9 @@ var URL = /*#__PURE__*/function () {
     set: function set(val) {
       if (val && (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) {
         val = val.trim();
-        var _parseUrl9 = parseUrl("//".concat(val)),
-          hostname = _parseUrl9.hostname,
-          port = _parseUrl9.port;
+        var _parseUrl = parseUrl("//".concat(val)),
+          hostname = _parseUrl.hostname,
+          port = _parseUrl.port;
         this.hostname = hostname;
         this.port = port;
       }
@@ -5498,18 +5516,25 @@ var URL = /*#__PURE__*/function () {
     },
     set: function set(val) {
       if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) {
-        if (val) __classPrivateFieldSet(this, _URL_pathname, val.trim(), "f");else __classPrivateFieldSet(this, _URL_pathname, '/', "f");
+        val = val.trim();
+        var HEAD_REG = /^(\/|\.\/|\.\.\/)/;
+        var temp = val;
+        while (HEAD_REG.test(temp)) {
+          temp = temp.replace(HEAD_REG, '');
+        }
+        if (temp) __classPrivateFieldSet(this, _URL_pathname, '/' + temp, "f");else __classPrivateFieldSet(this, _URL_pathname, '/', "f");
       }
     }
   }, {
     key: "search",
     get: function get() {
-      return __classPrivateFieldGet(this, _URL_search, "f");
+      var val = __classPrivateFieldGet(this, _URL_search, "f").toString();
+      return val.length === 0 || val.startsWith('?') ? val : "?".concat(val);
     },
     set: function set(val) {
       if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) {
         val = val.trim();
-        if (val) __classPrivateFieldSet(this, _URL_search, val.startsWith('?') ? val : "?".concat(val), "f");else __classPrivateFieldSet(this, _URL_search, '', "f");
+        __classPrivateFieldSet(this, _URL_search, new URLSearchParams(val), "f");
       }
     }
   }, {
@@ -5531,13 +5556,13 @@ var URL = /*#__PURE__*/function () {
     set: function set(val) {
       if (val && (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) {
         val = val.trim();
-        var _parseUrl10 = parseUrl(val),
-          protocol = _parseUrl10.protocol,
-          hostname = _parseUrl10.hostname,
-          port = _parseUrl10.port,
-          hash = _parseUrl10.hash,
-          search = _parseUrl10.search,
-          pathname = _parseUrl10.pathname;
+        var _parseUrl2 = parseUrl(val),
+          protocol = _parseUrl2.protocol,
+          hostname = _parseUrl2.hostname,
+          port = _parseUrl2.port,
+          hash = _parseUrl2.hash,
+          search = _parseUrl2.search,
+          pathname = _parseUrl2.pathname;
         this.protocol = protocol;
         this.hostname = hostname;
         this.pathname = pathname;
@@ -5554,10 +5579,10 @@ var URL = /*#__PURE__*/function () {
     set: function set(val) {
       if (val && (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) {
         val = val.trim();
-        var _parseUrl11 = parseUrl(val),
-          protocol = _parseUrl11.protocol,
-          hostname = _parseUrl11.hostname,
-          port = _parseUrl11.port;
+        var _parseUrl3 = parseUrl(val),
+          protocol = _parseUrl3.protocol,
+          hostname = _parseUrl3.hostname,
+          port = _parseUrl3.port;
         this.protocol = protocol;
         this.hostname = hostname;
         this.port = port;
@@ -5566,7 +5591,7 @@ var URL = /*#__PURE__*/function () {
   }, {
     key: "searchParams",
     get: function get() {
-      return new URLSearchParams(this.search);
+      return __classPrivateFieldGet(this, _URL_search, "f");
     }
     // public method
   }, {
@@ -5609,6 +5634,36 @@ var URL = /*#__PURE__*/function () {
   return URL;
 }();
 _URL_hash = new WeakMap(), _URL_hostname = new WeakMap(), _URL_pathname = new WeakMap(), _URL_port = new WeakMap(), _URL_protocol = new WeakMap(), _URL_search = new WeakMap();
+function parseUrl() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var result = {
+    href: '',
+    origin: '',
+    protocol: '',
+    hostname: '',
+    host: '',
+    port: '',
+    pathname: '',
+    search: '',
+    hash: ''
+  };
+  if (!url || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(url)) return result;
+  url = url.trim();
+  var PATTERN = /^(([^:/?#]+):)?\/\/(([^/?#]+):(.+)@)?([^/?#:]*)(:(\d+))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+  var matches = url.match(PATTERN);
+  if (!matches) return result;
+  // TODO: username & password ?
+  result.protocol = matches[1] || 'https:';
+  result.hostname = matches[6] || 'taro.com';
+  result.port = matches[8] || '';
+  result.pathname = matches[9] || '/';
+  result.search = matches[10] || '';
+  result.hash = matches[12] || '';
+  result.href = url;
+  result.origin = result.protocol + '//' + result.hostname;
+  result.host = result.hostname + (result.port ? ":".concat(result.port) : '');
+  return result;
+}
 function parseUrlBase(url, base) {
   var VALID_URL = /^(https?:)\/\//i;
   var fullUrl = '';
@@ -5636,60 +5691,306 @@ function parseUrlBase(url, base) {
   }
   return parseUrl(fullUrl);
 }
-var _History_instances, _History_location, _History_stack, _History_cur, _History_window, _History_reset;
-var cache = new RuntimeCache('history');
-var History = /*#__PURE__*/function (_Events2) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(History, _Events2);
-  var _super11 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(History);
-  function History(location, options) {
-    var _this20;
-    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, History);
-    _this20 = _super11.call(this);
-    _History_instances.add((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20));
-    /* private property */
-    _History_location.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), void 0);
-    _History_stack.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), []);
-    _History_cur.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), 0);
-    _History_window.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), void 0);
-    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_window, options.window, "f");
-    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_location, location, "f");
-    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_location, "f").on('__record_history__', function (href) {
+var AnchorElement = /*#__PURE__*/function (_TaroElement3) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(AnchorElement, _TaroElement3);
+  var _super7 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(AnchorElement);
+  function AnchorElement() {
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, AnchorElement);
+    return _super7.apply(this, arguments);
+  }
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(AnchorElement, [{
+    key: "href",
+    get: function get() {
       var _a;
-      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_cur, (_a = __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_cur, "f"), _a++, _a), "f");
-      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_stack, __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_stack, "f").slice(0, __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_cur, "f")), "f");
-      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_stack, "f").push({
+      return (_a = this.props["href" /* AnchorElementAttrs.HREF */]) !== null && _a !== void 0 ? _a : '';
+    },
+    set: function set(val) {
+      this.setAttribute("href" /* AnchorElementAttrs.HREF */, val);
+    }
+  }, {
+    key: "protocol",
+    get: function get() {
+      var _a;
+      return (_a = this.props["protocol" /* AnchorElementAttrs.PROTOCOL */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "host",
+    get: function get() {
+      var _a;
+      return (_a = this.props["host" /* AnchorElementAttrs.HOST */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "search",
+    get: function get() {
+      var _a;
+      return (_a = this.props["search" /* AnchorElementAttrs.SEARCH */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "hash",
+    get: function get() {
+      var _a;
+      return (_a = this.props["hash" /* AnchorElementAttrs.HASH */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "hostname",
+    get: function get() {
+      var _a;
+      return (_a = this.props["hostname" /* AnchorElementAttrs.HOSTNAME */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "port",
+    get: function get() {
+      var _a;
+      return (_a = this.props["port" /* AnchorElementAttrs.PORT */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "pathname",
+    get: function get() {
+      var _a;
+      return (_a = this.props["pathname" /* AnchorElementAttrs.PATHNAME */]) !== null && _a !== void 0 ? _a : '';
+    }
+  }, {
+    key: "setAttribute",
+    value: function setAttribute(qualifiedName, value) {
+      if (qualifiedName === "href" /* AnchorElementAttrs.HREF */) {
+        var willSetAttr = parseUrl(value);
+        for (var k in willSetAttr) {
+          (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(AnchorElement.prototype), "setAttribute", this).call(this, k, willSetAttr[k]);
+        }
+      } else {
+        (0,E_projects_node_modules_babel_runtime_helpers_esm_get_js__WEBPACK_IMPORTED_MODULE_13__["default"])((0,E_projects_node_modules_babel_runtime_helpers_esm_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_12__["default"])(AnchorElement.prototype), "setAttribute", this).call(this, qualifiedName, value);
+      }
+    }
+  }]);
+  return AnchorElement;
+}(TaroElement);
+var CustomWrapperElement = /*#__PURE__*/function (_TaroElement4) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(CustomWrapperElement, _TaroElement4);
+  var _super8 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(CustomWrapperElement);
+  function CustomWrapperElement() {
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, CustomWrapperElement);
+    return _super8.apply(this, arguments);
+  }
+  return (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(CustomWrapperElement);
+}(TaroElement);
+var TaroDocument = /*#__PURE__*/function (_TaroElement5) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(TaroDocument, _TaroElement5);
+  var _super9 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(TaroDocument);
+  function TaroDocument() {
+    var _this18;
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TaroDocument);
+    _this18 = _super9.call(this);
+    _this18.createEvent = createEvent;
+    _this18.nodeType = 9 /* NodeType.DOCUMENT_NODE */;
+    _this18.nodeName = DOCUMENT_ELEMENT_NAME;
+    return _this18;
+  }
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(TaroDocument, [{
+    key: "createElement",
+    value: function createElement(type) {
+      var nodeName = type.toLowerCase();
+      var element;
+      switch (true) {
+        case nodeName === ROOT_STR:
+          element = new TaroRootElement();
+          return element;
+        case _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.controlledComponent.has(nodeName):
+          element = new FormElement();
+          break;
+        case nodeName === A:
+          element = new AnchorElement();
+          break;
+        case nodeName === CUSTOM_WRAPPER:
+          element = new CustomWrapperElement();
+          break;
+        default:
+          element = new TaroElement();
+          break;
+      }
+      element.nodeName = nodeName;
+      element.tagName = type.toUpperCase();
+      return element;
+    }
+    // an ugly fake createElementNS to deal with @vue/runtime-dom's
+    // support mounting app to svg container since vue@3.0.8
+  }, {
+    key: "createElementNS",
+    value: function createElementNS(_svgNS, type) {
+      return this.createElement(type);
+    }
+  }, {
+    key: "createTextNode",
+    value: function createTextNode(text) {
+      return new TaroText(text);
+    }
+  }, {
+    key: "getElementById",
+    value: function getElementById(id) {
+      var el = eventSource.get(id);
+      return (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isUndefined)(el) ? null : el;
+    }
+  }, {
+    key: "querySelector",
+    value: function querySelector(query) {
+      // 为了 Vue3 的乞丐版实现
+      if (/^#/.test(query)) {
+        return this.getElementById(query.slice(1));
+      }
+      return null;
+    }
+  }, {
+    key: "querySelectorAll",
+    value: function querySelectorAll() {
+      // fake hack
+      return [];
+    }
+    // @TODO: @PERF: 在 hydrate 移除掉空的 node
+  }, {
+    key: "createComment",
+    value: function createComment() {
+      var textnode = new TaroText('');
+      textnode.nodeName = COMMENT;
+      return textnode;
+    }
+  }, {
+    key: "defaultView",
+    get: function get() {
+      return env.window;
+    }
+  }]);
+  return TaroDocument;
+}(TaroElement);
+var document$1;
+if ( true && !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)()) {
+  /* eslint-disable no-inner-declarations */
+  var createDocument = function createDocument() {
+    /**
+       * <document>
+       *   <html>
+       *     <head></head>
+       *     <body>
+       *       <container>
+       *         <app id="app" />
+       *       </container>
+       *     </body>
+       *   </html>
+       * </document>
+       */
+    var doc = new TaroDocument();
+    var documentCreateElement = doc.createElement.bind(doc);
+    var html = documentCreateElement(HTML);
+    var head = documentCreateElement(HEAD);
+    var body = documentCreateElement(BODY);
+    var app = documentCreateElement(APP);
+    app.id = APP;
+    var container = documentCreateElement(CONTAINER); // 多包一层主要为了兼容 vue
+    doc.appendChild(html);
+    html.appendChild(head);
+    html.appendChild(body);
+    body.appendChild(container);
+    container.appendChild(app);
+    doc.documentElement = html;
+    doc.head = head;
+    doc.body = body;
+    return doc;
+  };
+  document$1 = env.document = createDocument();
+} else {
+  document$1 = env.document;
+}
+function getComputedStyle(element) {
+  return element.style;
+}
+var eventCenter = _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getEventCenter', _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events);
+
+/**
+ * 一个小型缓存池，用于在切换页面时，存储一些上下文信息
+ */
+var RuntimeCache = /*#__PURE__*/function () {
+  function RuntimeCache(name) {
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, RuntimeCache);
+    this.cache = new Map();
+    this.name = name;
+  }
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(RuntimeCache, [{
+    key: "has",
+    value: function has(identifier) {
+      return this.cache.has(identifier);
+    }
+  }, {
+    key: "set",
+    value: function set(identifier, ctx) {
+      if (identifier && ctx) {
+        this.cache.set(identifier, ctx);
+      }
+    }
+  }, {
+    key: "get",
+    value: function get(identifier) {
+      if (this.has(identifier)) return this.cache.get(identifier);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(identifier) {
+      this.cache.delete(identifier);
+    }
+  }]);
+  return RuntimeCache;
+}();
+var _History_instances, _History_location, _History_stack, _History_cur, _History_window, _History_reset;
+var cache$1 = new RuntimeCache('history');
+var History = /*#__PURE__*/function (_Events) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(History, _Events);
+  var _super10 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(History);
+  function History(location, options) {
+    var _this19;
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, History);
+    _this19 = _super10.call(this);
+    _History_instances.add((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19));
+    /* private property */
+    _History_location.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), void 0);
+    _History_stack.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), []);
+    _History_cur.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), 0);
+    _History_window.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), void 0);
+    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_window, options.window, "f");
+    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_location, location, "f");
+    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_location, "f").on('__record_history__', function (href) {
+      var _a;
+      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_cur, (_a = __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_cur, "f"), _a++, _a), "f");
+      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_stack, __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_stack, "f").slice(0, __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_cur, "f")), "f");
+      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_stack, "f").push({
         state: null,
         title: '',
         url: href
       });
     }, null);
-    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_location, "f").on('__reset_history__', function (href) {
-      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), href);
+    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_location, "f").on('__reset_history__', function (href) {
+      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), href);
     }, null);
     // 切换上下文行为
-    _this20.on(CONTEXT_ACTIONS.INIT, function () {
-      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20));
+    _this19.on(CONTEXT_ACTIONS.INIT, function () {
+      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19));
     }, null);
-    _this20.on(CONTEXT_ACTIONS.RESTORE, function (pageId) {
-      cache.set(pageId, {
-        location: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_location, "f"),
-        stack: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_stack, "f"),
-        cur: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_cur, "f")
+    _this19.on(CONTEXT_ACTIONS.RESTORE, function (pageId) {
+      cache$1.set(pageId, {
+        location: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_location, "f"),
+        stack: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_stack, "f").slice(),
+        cur: __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_cur, "f")
       });
     }, null);
-    _this20.on(CONTEXT_ACTIONS.RECOVER, function (pageId) {
-      if (cache.has(pageId)) {
-        var ctx = cache.get(pageId);
-        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_location, ctx.location, "f");
-        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_stack, ctx.stack, "f");
-        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_cur, ctx.cur, "f");
+    _this19.on(CONTEXT_ACTIONS.RECOVER, function (pageId) {
+      if (cache$1.has(pageId)) {
+        var ctx = cache$1.get(pageId);
+        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_location, ctx.location, "f");
+        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_stack, ctx.stack, "f");
+        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_cur, ctx.cur, "f");
       }
     }, null);
-    _this20.on(CONTEXT_ACTIONS.DESTORY, function (pageId) {
-      cache.delete(pageId);
+    _this19.on(CONTEXT_ACTIONS.DESTORY, function (pageId) {
+      cache$1.delete(pageId);
     }, null);
-    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this20));
-    return _this20;
+    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19), _History_instances, "m", _History_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this19));
+    return _this19;
   }
   /* public property */
   (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(History, [{
@@ -5700,7 +6001,7 @@ var History = /*#__PURE__*/function (_Events2) {
   }, {
     key: "state",
     get: function get() {
-      return __classPrivateFieldGet(this, _History_stack, "f")[__classPrivateFieldGet(this, _History_cur, "f")];
+      return __classPrivateFieldGet(this, _History_stack, "f")[__classPrivateFieldGet(this, _History_cur, "f")].state;
     }
     /* public method */
   }, {
@@ -5751,7 +6052,7 @@ var History = /*#__PURE__*/function (_Events2) {
   }, {
     key: "cache",
     get: function get() {
-      return cache;
+      return cache$1;
     }
   }]);
   return History;
@@ -5765,8 +6066,323 @@ _History_location = new WeakMap(), _History_stack = new WeakMap(), _History_cur 
   }], "f");
   __classPrivateFieldSet(this, _History_cur, 0, "f");
 };
+var Current = {
+  app: null,
+  router: null,
+  page: null
+};
+var getCurrentInstance = function getCurrentInstance() {
+  return Current;
+};
+var _Location_instances, _Location_url, _Location_noCheckUrl, _Location_window, _Location_reset, _Location_getPreValue, _Location_rollBack, _Location_recordHistory, _Location_checkUrlChange;
+var INIT_URL = 'https://taro.com';
+var cache = new RuntimeCache('location');
+var Location = /*#__PURE__*/function (_Events2) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(Location, _Events2);
+  var _super11 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(Location);
+  function Location(options) {
+    var _this20;
+    (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Location);
+    _this20 = _super11.call(this);
+    _Location_instances.add((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20));
+    /* private property */
+    _Location_url.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), new URL(INIT_URL));
+    _Location_noCheckUrl.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), false);
+    _Location_window.set((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), void 0);
+    __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_window, options.window, "f");
+    __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_instances, "m", _Location_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20));
+    _this20.on('__set_href_without_history__', function (href) {
+      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_noCheckUrl, true, "f");
+      var lastHash = __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_url, "f").hash;
+      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_url, "f").href = generateFullUrl(href);
+      if (lastHash !== __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_url, "f").hash) {
+        __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_window, "f").trigger('hashchange');
+      }
+      __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_noCheckUrl, false, "f");
+    }, null);
+    // 切换上下文行为
+    _this20.on(CONTEXT_ACTIONS.INIT, function () {
+      __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_instances, "m", _Location_reset).call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20));
+    }, null);
+    _this20.on(CONTEXT_ACTIONS.RESTORE, function (pageId) {
+      cache.set(pageId, {
+        lastHref: _this20.href
+      });
+    }, null);
+    _this20.on(CONTEXT_ACTIONS.RECOVER, function (pageId) {
+      // 数据恢复时，不需要执行跳转
+      if (cache.has(pageId)) {
+        var ctx = cache.get(pageId);
+        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_noCheckUrl, true, "f");
+        __classPrivateFieldGet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_url, "f").href = ctx.lastHref;
+        __classPrivateFieldSet((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this20), _Location_noCheckUrl, false, "f");
+      }
+    }, null);
+    _this20.on(CONTEXT_ACTIONS.DESTORY, function (pageId) {
+      cache.delete(pageId);
+    }, null);
+    return _this20;
+  }
+  /* public property */
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_createClass_js__WEBPACK_IMPORTED_MODULE_2__["default"])(Location, [{
+    key: "protocol",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").protocol;
+    },
+    set: function set(val) {
+      var REG = /^(http|https):$/i;
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !REG.test(val.trim())) return;
+      val = val.trim();
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").protocol = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "host",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").host;
+    },
+    set: function set(val) {
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
+      val = val.trim();
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").host = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "hostname",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").hostname;
+    },
+    set: function set(val) {
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
+      val = val.trim();
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").hostname = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "port",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").port;
+    },
+    set: function set(val) {
+      var xVal = Number(val = val.trim());
+      if (!(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isNumber)(xVal) || xVal <= 0) return;
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").port = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "pathname",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").pathname;
+    },
+    set: function set(val) {
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
+      val = val.trim();
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").pathname = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "search",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").search;
+    },
+    set: function set(val) {
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
+      val = val.trim();
+      val = val.startsWith('?') ? val : "?".concat(val);
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").search = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "hash",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").hash;
+    }
+    // 小程序的navigateTo存在截断hash字符串的问题
+    ,
+    set: function set(val) {
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val)) return;
+      val = val.trim();
+      val = val.startsWith('#') ? val : "#".concat(val);
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").hash = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "href",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").href;
+    },
+    set: function set(val) {
+      var REG = /^(http:|https:)?\/\/.+/;
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !REG.test(val = val.trim())) return;
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").href = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+  }, {
+    key: "origin",
+    get: function get() {
+      return __classPrivateFieldGet(this, _Location_url, "f").origin;
+    },
+    set: function set(val) {
+      var REG = /^(http:|https:)?\/\/.+/;
+      if (!val || !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(val) || !REG.test(val = val.trim())) return;
+      var preValue = __classPrivateFieldGet(this, _Location_instances, "m", _Location_getPreValue).call(this);
+      __classPrivateFieldGet(this, _Location_url, "f").origin = val;
+      if (__classPrivateFieldGet(this, _Location_instances, "m", _Location_checkUrlChange).call(this, preValue)) __classPrivateFieldGet(this, _Location_instances, "m", _Location_recordHistory).call(this);
+    }
+    /* public method */
+  }, {
+    key: "assign",
+    value: function assign() {
+      (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.warn)(true, '小程序环境中调用location.assign()无效.');
+    }
+  }, {
+    key: "reload",
+    value: function reload() {
+      (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.warn)(true, '小程序环境中调用location.reload()无效.');
+    }
+  }, {
+    key: "replace",
+    value: function replace(url) {
+      this.trigger('__set_href_without_history__', url);
+    }
+  }, {
+    key: "toString",
+    value: function toString() {
+      return this.href;
+    }
+    // For debug
+  }, {
+    key: "cache",
+    get: function get() {
+      return cache;
+    }
+  }]);
+  return Location;
+}(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events);
+_Location_url = new WeakMap(), _Location_noCheckUrl = new WeakMap(), _Location_window = new WeakMap(), _Location_instances = new WeakSet(), _Location_reset = function _Location_reset() {
+  var Current = getCurrentInstance();
+  var router = Current.router;
+  if (router) {
+    var path = router.path,
+      params = router.params;
+    var searchArr = Object.keys(params).map(function (key) {
+      return "".concat(key, "=").concat(params[key]);
+    });
+    var searchStr = searchArr.length > 0 ? '?' + searchArr.join('&') : '';
+    var url = "".concat(INIT_URL).concat(path.startsWith('/') ? path : '/' + path).concat(searchStr);
+    __classPrivateFieldSet(this, _Location_url, new URL(url), "f");
+    this.trigger('__reset_history__', this.href);
+  }
+}, _Location_getPreValue = function _Location_getPreValue() {
+  return __classPrivateFieldGet(this, _Location_url, "f")._toRaw();
+}, _Location_rollBack = function _Location_rollBack(href) {
+  __classPrivateFieldGet(this, _Location_url, "f").href = href;
+}, _Location_recordHistory = function _Location_recordHistory() {
+  this.trigger('__record_history__', this.href);
+}, _Location_checkUrlChange = function _Location_checkUrlChange(preValue) {
+  if (__classPrivateFieldGet(this, _Location_noCheckUrl, "f")) {
+    return false;
+  }
+  var _classPrivateFieldGe = __classPrivateFieldGet(this, _Location_url, "f")._toRaw(),
+    protocol = _classPrivateFieldGe.protocol,
+    hostname = _classPrivateFieldGe.hostname,
+    port = _classPrivateFieldGe.port,
+    pathname = _classPrivateFieldGe.pathname,
+    search = _classPrivateFieldGe.search,
+    hash = _classPrivateFieldGe.hash;
+  // 跨域三要素不允许修改
+  if (protocol !== preValue.protocol || hostname !== preValue.hostname || port !== preValue.port) {
+    __classPrivateFieldGet(this, _Location_instances, "m", _Location_rollBack).call(this, preValue.href);
+    return false;
+  }
+  // pathname
+  if (pathname !== preValue.pathname) {
+    return true;
+  }
+  // search
+  if (search !== preValue.search) {
+    return true;
+  }
+  // hashchange
+  if (hash !== preValue.hash) {
+    __classPrivateFieldGet(this, _Location_window, "f").trigger('hashchange');
+    return true;
+  }
+  __classPrivateFieldGet(this, _Location_instances, "m", _Location_rollBack).call(this, preValue.href);
+  return false;
+};
+function generateFullUrl() {
+  var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var origin = INIT_URL;
+  if (/^[/?#]/.test(val)) {
+    return origin + val;
+  }
+  return val;
+}
+var machine = 'Macintosh';
+var arch = 'Intel Mac OS X 10_14_5';
+var engine = 'AppleWebKit/534.36 (KHTML, like Gecko) NodeJS/v4.1.0 Chrome/76.0.3809.132 Safari/534.36';
+var msg = '(' + machine + '; ' + arch + ') ' + engine;
+var nav = (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)() ? env.window.navigator : {
+  appCodeName: 'Mozilla',
+  appName: 'Netscape',
+  appVersion: '5.0 ' + msg,
+  cookieEnabled: true,
+  mimeTypes: [],
+  onLine: true,
+  platform: 'MacIntel',
+  plugins: [],
+  product: 'Taro',
+  productSub: '20030107',
+  userAgent: 'Mozilla/5.0 ' + msg,
+  vendor: 'Joyent',
+  vendorSub: ''
+};
+
+// https://github.com/myrne/performance-now
+var now;
+(function () {
+  var loadTime;
+  if (typeof performance !== 'undefined' && performance !== null && performance.now) {
+    now = function now() {
+      return performance.now();
+    };
+  } else if (Date.now) {
+    loadTime = Date.now();
+    now = function now() {
+      return Date.now() - loadTime;
+    };
+  } else {
+    loadTime = new Date().getTime();
+    now = function now() {
+      return new Date().getTime() - loadTime;
+    };
+  }
+})();
+var lastTime = 0;
+// https://gist.github.com/paulirish/1579671
+// https://gist.github.com/jalbam/5fe05443270fa6d8136238ec72accbc0
+var _raf = typeof requestAnimationFrame !== 'undefined' && requestAnimationFrame !== null ? requestAnimationFrame : function (callback) {
+  var _now = now();
+  var nextTime = Math.max(lastTime + 16, _now); // First time will execute it immediately but barely noticeable and performance is gained.
+  return setTimeout(function () {
+    callback(lastTime = nextTime);
+  }, nextTime - _now);
+};
+var _caf = typeof cancelAnimationFrame !== 'undefined' && cancelAnimationFrame !== null ? cancelAnimationFrame : function (seed) {
+  // fix https://github.com/NervJS/taro/issues/7749
+  clearTimeout(seed);
+};
 var window$1;
-if (true) {
+if ( true && !(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)()) {
   var Window = /*#__PURE__*/function (_Events3) {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(Window, _Events3);
     var _super12 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(Window);
@@ -5781,17 +6397,24 @@ if (true) {
       var globalProperties = [].concat((0,E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(Object.getOwnPropertyNames(__webpack_require__.g || {})), (0,E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(Object.getOwnPropertySymbols(__webpack_require__.g || {})));
       globalProperties.forEach(function (property) {
         if (property === 'atob' || property === 'document') return;
-        if (!Object.prototype.hasOwnProperty.call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this21), property)) {
-          _this21[property] = __webpack_require__.g[property];
+        if (!Object.prototype.hasOwnProperty.call((0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this21), property)) {
+          // 防止小程序环境下，window 上的某些 get 属性在赋值时报错
+          try {
+            _this21[property] = __webpack_require__.g[property];
+          } catch (e) {
+            if (true) {
+              console.warn("[Taro warn] window.".concat(String(property), " \u5728\u8D4B\u503C\u5230 window \u65F6\u62A5\u9519"));
+            }
+          }
         }
       });
       _this21.Date || (_this21.Date = Date);
       // 应用启动时，提供给需要读取历史信息的库使用
       _this21.location = new Location({
-        window: (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this21)
+        window: (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this21)
       });
       _this21.history = new History(_this21.location, {
-        window: (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_this21)
+        window: (0,E_projects_node_modules_babel_runtime_helpers_esm_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_this21)
       });
       _this21.initEvent();
       return _this21;
@@ -5868,13 +6491,15 @@ if (true) {
     return Window;
   }(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.Events);
   window$1 = env.window = new Window();
-} else {}
+} else {
+  window$1 = env.window;
+}
 var location = window$1.location;
 var history = window$1.history;
 
 // for Vue3
-var SVGElement = /*#__PURE__*/function (_TaroElement5) {
-  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(SVGElement, _TaroElement5);
+var SVGElement = /*#__PURE__*/function (_TaroElement6) {
+  (0,E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_4__["default"])(SVGElement, _TaroElement6);
   var _super13 = (0,E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(SVGElement);
   function SVGElement() {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this, SVGElement);
@@ -5885,6 +6510,7 @@ var SVGElement = /*#__PURE__*/function (_TaroElement5) {
 /* eslint-disable dot-notation */
 var instances = new Map();
 var pageId = incrementId();
+var isWeb = (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)();
 function injectPageInstance(inst, id) {
   _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('mergePageInstance', instances.get(id), inst);
   instances.set(id, inst);
@@ -5932,7 +6558,11 @@ function stringify(obj) {
 }
 function getPath(id, options) {
   var idx = id.indexOf('?');
-  if (false) {} else {
+  if (isWeb) {
+    return "".concat(idx > -1 ? id.substring(0, idx) : id).concat(stringify((options === null || options === void 0 ? void 0 : options.stamp) ? {
+      stamp: options.stamp
+    } : {}));
+  } else {
     return "".concat(idx > -1 ? id.substring(0, idx) : id).concat(stringify(options));
   }
 }
@@ -5949,7 +6579,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
   var _config;
   // 小程序 Page 构造器是一个傲娇小公主，不能把复杂的对象挂载到参数上
   var id = pageName !== null && pageName !== void 0 ? pageName : "taro_page_".concat(pageId());
-  var _hooks$call$page = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').page, 7),
+  var _hooks$call$page = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').page, 7),
     ONLOAD = _hooks$call$page[0],
     ONUNLOAD = _hooks$call$page[1],
     ONREADY = _hooks$call$page[2],
@@ -5961,7 +6591,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
   var unmounting = false;
   var prepareMountList = [];
   function setCurrentRouter(page) {
-    var router =  false ? 0 : page.route || page.__route__ || page.$taroPath;
+    var router = isWeb ? page.$taroPath : page.route || page.__route__ || page.$taroPath;
     Current.router = {
       params: page.$taroParams,
       path: addLeadingSlash(router),
@@ -5976,7 +6606,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
   }
   var loadResolver;
   var hasLoaded;
-  var config = (_config = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config, ONLOAD, function () {
+  var config = (_config = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config, ONLOAD, function () {
     var _this22 = this;
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var cb = arguments.length > 1 ? arguments[1] : undefined;
@@ -5991,14 +6621,16 @@ function createPageConfig(component, pageName, data, pageConfig) {
       $taroTimestamp: Date.now()
     });
     var $taroPath = this.$taroPath = getPath(id, uniqueOptions);
-    if (false) {}
+    if (isWeb) {
+      config.path = $taroPath;
+    }
     // this.$taroParams 作为暴露给开发者的页面参数对象，可以被随意修改
     if (this.$taroParams == null) {
       this.$taroParams = uniqueOptions;
     }
     setCurrentRouter(this);
     // 初始化当前页面的上下文信息
-    if (true) {
+    if (!isWeb) {
       window$1.trigger(CONTEXT_ACTIONS.INIT, $taroPath);
     }
     var mount = function mount() {
@@ -6007,10 +6639,12 @@ function createPageConfig(component, pageName, data, pageConfig) {
         (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.ensure)(pageElement !== null, '没有找到页面实例。');
         safeExecute($taroPath, ON_LOAD, _this22.$taroParams);
         loadResolver();
-        if (true) {
+        if (!isWeb) {
           pageElement.ctx = _this22;
           pageElement.performUpdate(true, cb);
-        } else {}
+        } else {
+          (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isFunction)(cb) && cb();
+        }
       });
     };
     if (unmounting) {
@@ -6018,10 +6652,10 @@ function createPageConfig(component, pageName, data, pageConfig) {
     } else {
       mount();
     }
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config, ONUNLOAD, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config, ONUNLOAD, function () {
     var $taroPath = this.$taroPath;
     // 销毁当前页面的上下文信息
-    if (true) {
+    if (!isWeb) {
       window$1.trigger(CONTEXT_ACTIONS.DESTORY, $taroPath);
     }
     // 触发onUnload生命周期
@@ -6041,7 +6675,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
         prepareMountList = [];
       }
     });
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config, ONREADY, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config, ONREADY, function () {
     var _this23 = this;
     hasLoaded.then(function () {
       // 触发生命周期
@@ -6052,7 +6686,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
       });
       _this23.onReady.called = true;
     });
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config, ONSHOW, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config, ONSHOW, function () {
     var _this24 = this;
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     hasLoaded.then(function () {
@@ -6060,7 +6694,7 @@ function createPageConfig(component, pageName, data, pageConfig) {
       Current.page = _this24;
       setCurrentRouter(_this24);
       // 恢复上下文信息
-      if (true) {
+      if (!isWeb) {
         window$1.trigger(CONTEXT_ACTIONS.RECOVER, _this24.$taroPath);
       }
       // 触发生命周期
@@ -6070,9 +6704,9 @@ function createPageConfig(component, pageName, data, pageConfig) {
         return eventCenter.trigger(getOnShowEventKey(id));
       });
     });
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config, ONHIDE, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config, ONHIDE, function () {
     // 缓存当前页面上下文信息
-    if (true) {
+    if (!isWeb) {
       window$1.trigger(CONTEXT_ACTIONS.RESTORE, this.$taroPath);
     }
     // 设置 Current 的 page 和 router
@@ -6122,10 +6756,10 @@ function createComponentConfig(component, componentName, data) {
   var _config2;
   var id = componentName !== null && componentName !== void 0 ? componentName : "taro_component_".concat(pageId());
   var componentElement = null;
-  var _hooks$call$component = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').component, 2),
+  var _hooks$call$component = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').component, 2),
     ATTACHED = _hooks$call$component[0],
     DETACHED = _hooks$call$component[1];
-  var config = (_config2 = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config2, ATTACHED, function () {
+  var config = (_config2 = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config2, ATTACHED, function () {
     var _this25 = this;
     var _a;
     perf.start(PAGE_INIT);
@@ -6137,12 +6771,12 @@ function createComponentConfig(component, componentName, data) {
       (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.ensure)(componentElement !== null, '没有找到组件实例。');
       _this25.$taroInstances = instances.get(path);
       safeExecute(path, ON_LOAD);
-      if (true) {
+      if (!isWeb) {
         componentElement.ctx = _this25;
         componentElement.performUpdate(true);
       }
     });
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config2, DETACHED, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config2, DETACHED, function () {
     var path = getPath(id, {
       id: this.getPageId()
     });
@@ -6152,7 +6786,7 @@ function createComponentConfig(component, componentName, data) {
         componentElement.ctx = null;
       }
     });
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_config2, "methods", {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_config2, "methods", {
     eh: eventHandler
   }), _config2);
   if (!(0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isUndefined)(data)) {
@@ -6167,27 +6801,35 @@ function createComponentConfig(component, componentName, data) {
 function createRecursiveComponentConfig(componentName) {
   var _ref3;
   var isCustomWrapper = componentName === CUSTOM_WRAPPER;
-  var _hooks$call$component2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_13__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').component, 2),
+  var _hooks$call$component2 = (0,E_projects_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_14__["default"])(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.hooks.call('getMiniLifecycleImpl').component, 2),
     ATTACHED = _hooks$call$component2[0],
     DETACHED = _hooks$call$component2[1];
-  var lifeCycles = isCustomWrapper ? (_ref3 = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_ref3, ATTACHED, function () {
+  var lifeCycles = isCustomWrapper ? (_ref3 = {}, (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_ref3, ATTACHED, function () {
     var _a, _b;
     var componentId = ((_a = this.data.i) === null || _a === void 0 ? void 0 : _a.sid) || ((_b = this.props.i) === null || _b === void 0 ? void 0 : _b.sid);
     if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(componentId)) {
       customWrapperCache.set(componentId, this);
+      var el = env.document.getElementById(componentId);
+      if (el) {
+        el.ctx = this;
+      }
     }
-  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_ref3, DETACHED, function () {
+  }), (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_ref3, DETACHED, function () {
     var _a, _b;
     var componentId = ((_a = this.data.i) === null || _a === void 0 ? void 0 : _a.sid) || ((_b = this.props.i) === null || _b === void 0 ? void 0 : _b.sid);
     if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isString)(componentId)) {
       customWrapperCache.delete(componentId);
+      var el = env.document.getElementById(componentId);
+      if (el) {
+        el.ctx = null;
+      }
     }
   }), _ref3) : _tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.EMPTY_OBJ;
   return Object.assign({
     properties: {
       i: {
         type: Object,
-        value: (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_10__["default"])({}, "nn" /* Shortcuts.NodeName */, (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.getComponentsAlias)(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.internalComponents)[VIEW]._num)
+        value: (0,E_projects_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_7__["default"])({}, "nn" /* Shortcuts.NodeName */, (0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.getComponentsAlias)(_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.internalComponents)[VIEW]._num)
       },
       l: {
         type: String,
@@ -6216,7 +6858,12 @@ var nextTick = function nextTick(cb, ctx) {
     var path = router.$taroPath;
     pageElement = env.document.getElementById(path);
     if (pageElement === null || pageElement === void 0 ? void 0 : pageElement.pendingUpdate) {
-      if (false) {} else {
+      if ((0,_tarojs_shared__WEBPACK_IMPORTED_MODULE_0__.isWebPlatform)()) {
+        // eslint-disable-next-line dot-notation
+        (_c = (_b = (_a = pageElement.firstChild) === null || _a === void 0 ? void 0 : _a['componentOnReady']) === null || _b === void 0 ? void 0 : _b.call(_a).then(function () {
+          timerFunc();
+        })) !== null && _c !== void 0 ? _c : timerFunc();
+      } else {
         pageElement.enqueueUpdateCallback(cb, ctx);
       }
     } else {
@@ -6252,6 +6899,7 @@ var nextTick = function nextTick(cb, ctx) {
 /* harmony export */   "isObject": function() { return /* binding */ isObject; },
 /* harmony export */   "isString": function() { return /* binding */ isString; },
 /* harmony export */   "isUndefined": function() { return /* binding */ isUndefined; },
+/* harmony export */   "isWebPlatform": function() { return /* binding */ isWebPlatform; },
 /* harmony export */   "mergeInternalComponents": function() { return /* binding */ mergeInternalComponents; },
 /* harmony export */   "mergeReconciler": function() { return /* binding */ mergeReconciler; },
 /* harmony export */   "processApis": function() { return /* binding */ processApis; },
@@ -6259,7 +6907,7 @@ var nextTick = function nextTick(cb, ctx) {
 /* harmony export */   "toDashed": function() { return /* binding */ toDashed; },
 /* harmony export */   "warn": function() { return /* binding */ warn; }
 /* harmony export */ });
-/* unused harmony exports EMPTY_ARR, HOOK_TYPE, TaroHook, TaroHooks, animation, box, cacheDataGet, cacheDataHas, cacheDataSet, capitalize, focusComponents, getUniqueKey, hasOwn, indent, isBoolean, isBooleanStringLiteral, nestElements, nonsupport, noop, queryToJson, setUniqueKeyToRoute, singleQuote, toKebabCase, touchEvents, unbox, voidElements */
+/* unused harmony exports EMPTY_ARR, HOOK_TYPE, PLATFORM_CONFIG_MAP, PLATFORM_TYPE, TaroHook, TaroHooks, animation, box, cacheDataGet, cacheDataHas, cacheDataSet, capitalize, focusComponents, getPlatformType, getUniqueKey, hasOwn, indent, isBoolean, isBooleanStringLiteral, nestElements, nonsupport, noop, queryToJson, setUniqueKeyToRoute, singleQuote, toKebabCase, touchEvents, unbox, voidElements */
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_toConsumableArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js */ "../node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_inherits_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/inherits.js */ "../node_modules/@babel/runtime/helpers/esm/inherits.js");
 /* harmony import */ var E_projects_node_modules_babel_runtime_helpers_esm_createSuper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../node_modules/@babel/runtime/helpers/esm/createSuper.js */ "../node_modules/@babel/runtime/helpers/esm/createSuper.js");
@@ -6704,6 +7352,31 @@ var controlledComponent = new Set(['input', 'checkbox', 'picker', 'picker-view',
 var focusComponents = new Set(['input', 'textarea']);
 var voidElements = new Set(['progress', 'icon', 'rich-text', 'input', 'textarea', 'slider', 'switch', 'audio', 'ad', 'official-account', 'open-data', 'navigation-bar']);
 var nestElements = new Map([['view', -1], ['catch-view', -1], ['cover-view', -1], ['static-view', -1], ['pure-view', -1], ['block', -1], ['text', -1], ['static-text', 6], ['slot', 8], ['slot-view', 8], ['label', 6], ['form', 4], ['scroll-view', 4], ['swiper', 4], ['swiper-item', 4]]);
+var PLATFORM_TYPE;
+(function (PLATFORM_TYPE) {
+  PLATFORM_TYPE["MINI"] = "mini";
+  PLATFORM_TYPE["WEB"] = "web";
+  PLATFORM_TYPE["RN"] = "rn";
+  PLATFORM_TYPE["HARMONY"] = "harmony";
+  PLATFORM_TYPE["QUICK"] = "quickapp";
+})(PLATFORM_TYPE || (PLATFORM_TYPE = {}));
+var PLATFORM_CONFIG_MAP = {
+  h5: {
+    type: PLATFORM_TYPE.WEB
+  },
+  harmony: {
+    type: PLATFORM_TYPE.HARMONY
+  },
+  mini: {
+    type: PLATFORM_TYPE.MINI
+  },
+  rn: {
+    type: PLATFORM_TYPE.RN
+  },
+  quickapp: {
+    type: PLATFORM_TYPE.QUICK
+  }
+};
 var Events = /*#__PURE__*/function () {
   function Events(opts) {
     (0,E_projects_node_modules_babel_runtime_helpers_esm_classCallCheck_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Events);
@@ -6825,6 +7498,9 @@ function isBooleanStringLiteral(o) {
   return o === 'true' || o === 'false';
 }
 var isArray = Array.isArray;
+var isWebPlatform = function isWebPlatform() {
+  return  false || "mini" === 'web';
+};
 var HOOK_TYPE;
 (function (HOOK_TYPE) {
   HOOK_TYPE[HOOK_TYPE["SINGLE"] = 0] = "SINGLE";
@@ -6966,6 +7642,7 @@ var hooks = new TaroHooks({
       console.warn('[Taro modifyMpEvent hook Error]: ' + (error === null || error === void 0 ? void 0 : error.message));
     }
   }),
+  injectNewStyleProperties: TaroHook(HOOK_TYPE.SINGLE),
   modifyTaroEvent: TaroHook(HOOK_TYPE.MULTI),
   modifyDispatchEvent: TaroHook(HOOK_TYPE.MULTI),
   initNativeApi: TaroHook(HOOK_TYPE.MULTI),
@@ -7138,6 +7815,15 @@ function getComponentsAlias(origin) {
     mapping[toDashed(key)] = obj;
   });
   return mapping;
+}
+function getPlatformType() {
+  var platform = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'weapp';
+  var configNameOrType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : PLATFORM_TYPE.MINI;
+  if (Object.keys(PLATFORM_CONFIG_MAP).includes(platform)) {
+    configNameOrType = platform;
+  }
+  var param = PLATFORM_CONFIG_MAP[configNameOrType] || {};
+  return param.type || configNameOrType;
 }
 function mergeReconciler(hostConfig, hooksForTest) {
   var obj = hooksForTest || hooks;
@@ -7360,6 +8046,12 @@ function equipCommonApis(taro, global) {
   taro.addInterceptor = link.addInterceptor.bind(link);
   taro.cleanInterceptors = link.cleanInterceptors.bind(link);
   taro.miniGlobal = taro.options.miniGlobal = global;
+  taro.initAppInfo = function (appInfo) {
+    if (typeof taro.getAppInfo !== 'function') return;
+    taro.getAppInfo = function () {
+      return appInfo;
+    };
+  };
 }
 /**
  * 将Task对象中的方法挂载到promise对象中，适配小程序api原生返回结果

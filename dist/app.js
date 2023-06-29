@@ -43,7 +43,21 @@ var inst = App((0,_tarojs_plugin_framework_vue3_dist_runtime__WEBPACK_IMPORTED_M
         }
         return 750;
     },
-  deviceRatio: {"375":2,"640":1.17,"750":1,"828":0.905}
+  deviceRatio: {"375":2,"640":1.17,"750":1,"828":0.905},
+  baseFontSize: 20,
+  unitPrecision: undefined,
+  targetUnit: undefined
+})
+;(0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_4__.initAppInfo)({
+  platform: 'MiniProgram',
+  taroVersion: "3.6.6",
+  designWidth: function designWidth(input) {
+        var _input_file;
+        if ((input === null || input === void 0 ? void 0 : (_input_file = input.file) === null || _input_file === void 0 ? void 0 : _input_file.replace(/\\+/g, "/").indexOf("@nutui")) > -1) {
+            return 375;
+        }
+        return 750;
+    },
 })
 
 
@@ -67,6 +81,41 @@ var App = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
 // App.use(Button).use(ActionSheet).use(Cell)
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "../node_modules/@babel/runtime/helpers/esm/objectSpread2.js":
+/*!*******************************************************************!*\
+  !*** ../node_modules/@babel/runtime/helpers/esm/objectSpread2.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ _objectSpread2; }
+/* harmony export */ });
+/* harmony import */ var _defineProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defineProperty.js */ "../node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+      (0,_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
 
 /***/ })
 

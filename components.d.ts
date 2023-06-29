@@ -7,8 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    NutDatePicker: typeof import('@nutui/nutui-taro')['DatePicker']
-    NutInput: typeof import('@nutui/nutui-taro')['Input']
-    NutPopup: typeof import('@nutui/nutui-taro')['Popup']
+    NutSwiper: typeof import('@nutui/nutui-taro')['Swiper']
+    NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
   }
 }
